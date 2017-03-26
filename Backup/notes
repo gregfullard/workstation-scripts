@@ -1,0 +1,27 @@
+sudo mount -t cifs //192.168.3.253/public /mnt -o username=gregf,file_mode=0777,dir_mode=0777
+
+Note: use the -n flag to do an Rsync test which will display what is being done without actually doing anyting
+
+Dry Runs
+--------
+rsync -r -n -v --progress -s /home/gregf/Greg_OfflineData/RsyncTest /mnt/GregData/Greg_OfflineData
+rsync -r -n -v --progress -s /home/gregf/Greg_OfflineData/Active_VMs /mnt/GregData/Greg_OfflineData
+rsync -r -n -v --progress -s /home/gregf/Greg_OfflineData/Dev /mnt/GregData/Greg_OfflineData
+rsync -r -n -v --progress -s /home/gregf/Greg_OfflineData/Docker /mnt/GregData/Greg_OfflineData
+rsync -r -n -v --progress -s /home/gregf/Greg_OfflineData/Temp /mnt/GregData/Greg_OfflineData
+rsync -r -n -v --progress -s /home/gregf/Greg_OfflineData/Temp_Music /mnt/GregData/Greg_OfflineData
+rsync -r -n -v --progress -s /home/gregf/Greg_OfflineData/VMShare /mnt/GregData/Greg_OfflineData
+rsync -r -n -v --progress -s /home/gregf/Email /mnt/GregData/Greg_OfflineData/
+rsync -r -n -v --progress -s /home/gregf/Scripts /mnt/GregData/Greg_OfflineData/
+
+Real
+----
+rsync -r -v --progress -s /home/gregf/Greg_OfflineData/RsyncTest /mnt/GregData/Greg_OfflineData
+rsync -r -v --progress -s /home/gregf/Greg_OfflineData/Active_VMs /mnt/GregData/Greg_OfflineData
+rsync -r -v --progress -s /home/gregf/Greg_OfflineData/Dev /mnt/GregData/Greg_OfflineData
+rsync -r -v --progress -s /home/gregf/Greg_OfflineData/Docker /mnt/GregData/Greg_OfflineData
+rsync -r -v --progress -s /home/gregf/Greg_OfflineData/Temp /mnt/GregData/Greg_OfflineData
+rsync -r -v --progress -s /home/gregf/Greg_OfflineData/Temp_Music /mnt/GregData/Greg_OfflineData
+rsync -r -v --progress -s /home/gregf/Greg_OfflineData/VMShare /mnt/GregData/Greg_OfflineData
+rsync -r -v --progress -s /home/gregf/Email /mnt/GregData/Greg_OfflineData/
+rsync -r -v --progress -s /home/gregf/Scripts /mnt/GregData/Greg_OfflineData/
