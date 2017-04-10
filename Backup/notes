@@ -1,6 +1,6 @@
 sudo mount -t cifs //192.168.3.253/public /mnt -o username=gregf,file_mode=0777,dir_mode=0777
 
-Note: use the -n flag to do an Rsync test which will display what is being done without actually doing anyting
+Note: use the -n flag to do an Rsync test which will display what is being done without actually doing anything
 
 Dry Runs
 --------
