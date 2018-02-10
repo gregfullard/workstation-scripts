@@ -13,6 +13,7 @@ rsync -r -n -v --progress -s /home/gregf/Greg_OfflineData/Temp_Music /mnt/GregDa
 rsync -r -n -v --progress -s /home/gregf/Greg_OfflineData/VMShare /mnt/GregData/Greg_OfflineData
 rsync -r -n -v --progress -s /home/gregf/Email /mnt/GregData/Greg_OfflineData/
 rsync -r -n -v --progress -s /home/gregf/Scripts /mnt/GregData/Greg_OfflineData/
+rsync -r -n -v --progress -s /home/gregf/Desktop /mnt/GregData/Greg_OfflineData/
 
 Real
 ----
@@ -25,3 +26,4 @@ rsync -r -v --progress -s /home/gregf/Greg_OfflineData/Temp_Music /mnt/GregData/
 rsync -r -v --progress -s /home/gregf/Greg_OfflineData/VMShare /mnt/GregData/Greg_OfflineData
 rsync -r -v --progress -s /home/gregf/Email /mnt/GregData/Greg_OfflineData/
 rsync -r -v --progress -s /home/gregf/Scripts /mnt/GregData/Greg_OfflineData/
+rsync -r -v --progress -s /home/gregf/Desktop /mnt/GregData/Greg_OfflineData/

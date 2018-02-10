@@ -8,7 +8,4 @@ rsync -r -v --progress -s /home/gregf/Greg_OfflineData/Temp /mnt/GregData/Greg_O
 rsync -r -v --progress -s /home/gregf/Greg_OfflineData/Temp_Music /mnt/GregData/Greg_OfflineData
 rsync -r -v --progress -s /home/gregf/Greg_OfflineData/VMShare /mnt/GregData/Greg_OfflineData
 rsync -r -v --progress -s /home/gregf/Email /mnt/GregData/Greg_OfflineData/
-rsync -r -v --progress -s /home/gregf/Scripts /mnt/GregData/Greg_OfflineData/
-
-
-
+rsync -r -v --progress -s /home/gregf/Desktop /mnt/GregData/Greg_OfflineData/
