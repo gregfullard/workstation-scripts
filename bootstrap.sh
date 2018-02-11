@@ -25,7 +25,7 @@ echo '**************** (If it already exists, make a zzz backup of the existing 
 homefolder=~
 if [ -d "$homefolder/WorkstationScripts" ]
 then
-    echo 'Directory '$homefolder'/WorkstationScripts exists already'
+    echo 'Directory '$homefolder'/WorkstationScripts exists already. We will back it up and create a new one from git'
     now=$(date +"%Y%m%d_%H%M%S")
     cp -r ./WorkstationScripts ./zzzWorkstationScripts_$now
     sudo rm ./WorkstationScripts -R
