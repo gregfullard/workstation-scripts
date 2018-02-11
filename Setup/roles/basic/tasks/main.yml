@@ -1,2 +1,23 @@
-- name: "Installing Nano"
-  apt: pkg=nano state=installed
+# Install packages
+- name: "Installing Software"
+  apt: pkg={{ item }} state=installed
+  with_items:
+  - nano
+  - dnsutils
+  - git
+
+# Create Folders
+- name: "Create folder :: Software"
+  file: path=/home/{{ user_name }}/Software state=directory owner={{ user_name }} group={{ user_name }}
+- name: "Create folders :: GoogleDrive"
+  file: path=/home/{{ user_name }}/GoogleDrive state=directory owner={{ user_name }} group={{ user_name }}
+- name: "Create folders :: Email"
+  file: path=/home/{{ user_name }}/Email state=directory owner={{ user_name }} group={{ user_name }}
+- name: "Create folders :: Greg_OfflineData"
+  file: path=/home/{{ user_name }}/Greg_OfflineData state=directory owner={{ user_name }} group={{ user_name }}
+- name: "Create folders :: Repos"
+  file: path=/home/{{ user_name }}/Repos state=directory owner={{ user_name }} group={{ user_name }}
+
+# Copying files
+#- name: "Some copy tasks"
+#  copy: src=<source location> dest=<destination>  owner=<owner of file>  group<group for the file>  mode=<permissions eg. 755>
