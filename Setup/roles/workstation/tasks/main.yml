@@ -70,9 +70,9 @@
 - name: "Download Zoom DEB"
   get_url:
        url="https://zoom.us/client/latest/zoom_amd64.deb"
-       dest="/home/{{ user_name }}/zoom_amd64.deb"
+       dest="/home/{{ user_name }}/Downloads/zoom_amd64.deb"
 
 # Install zoom
 - name: Install .deb files
   become: yes
-  apt: deb="/home/{{ user_name }}/zoom_amd64.deb"
+  apt: deb="/home/{{ user_name }}/Downloads/zoom_amd64.deb"
