@@ -3,3 +3,58 @@
 # Jmeter
 # SOAPUI
 # ARC for Chrome
+
+- name: Install dependencies
+  become: yes
+  apt: name={{ item }} state=latest
+  with_items:
+    - unzip
+
+- name: Create SoapUI Directory
+  become: yes
+  file: name={{ soapui_install_dir }}
+        state=directory
+        owner={{ user_name }}
+        group={{ user_name }}
+
+- name: Download SoapUI binaries
+  get_url: url=http://smartbearsoftware.com/distrib/soapui/{{ soapui_version }}/SoapUI-{{ soapui_version }}-linux-bin.tar.gz
+    dest={{ home_folder }}/Downloads/soapui-{{ soapui_version }}.tar.gz
+
+- name: Untar SoapUI
+  unarchive:
+    copy=no
+    src={{ home_folder }}/Downloads/soapui-{{ soapui_version }}.tar.gz
+    dest={{ soapui_install_dir }}
+
+- name: Create SoapUI version directory Symlink
+  file:
+    src="{{ soapui_install_dir }}/SoapUI-{{ soapui_version }}"
+    path="{{ soapui_install_dir }}/latest"
+    state=link
+
+- name: Extract SoapUI icon from jar
+  command: bash -c 'unzip -p soapui-{{ soapui_version }}.jar com/eviware/soapui/resources/images/favicon.png >./favicon.png'
+           chdir={{ soapui_install_dir }}/latest/bin
+
+- name: Create symlink in bin folder
+  file:
+    src={{ soapui_install_dir }}/latest/bin/soapui.sh
+    dest=/usr/bin/soapui
+    state=link
+  become: yes
+
+#- name: Create desktop entry
+#  template:
+#    src={{role_path}}/templates/soapui.desktop.j2
+#    dest=/usr/share/applications/soapui.desktop
+#    mode=755
+#  with_items:
+#    - {
+#      name: "SoapUI",
+#      exec: "/opt/soapui/latest/bin/soapui.sh",
+#      icon: "/opt/soapui/latest/bin/favicon.png",
+#      comment: "Test SOAP interfaces!",
+#      categories: "Development",
+#      path: "/opt/soapui/latest/bin"
+#    }

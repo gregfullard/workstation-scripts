@@ -2,7 +2,9 @@
 - hosts: localhost
   vars:
     user_name: gregf
-  #become: true
+    home_folder: "/home/{{ user_name }}"
+    soapui_version: 5.2.1
+    soapui_install_dir: "{{ home_folder }}/Software/SOAPUI2"
   roles:
   - basic
   - workstation

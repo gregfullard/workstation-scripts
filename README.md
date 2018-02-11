@@ -54,7 +54,7 @@ Ansible playbooks.
 * TBD - [docker-compose](https://docs.docker.com/comp* TBD - Vokoscreenose/) ![Installed](https://img.shields.io/badge/current\-v1.18.0-blue.svg) [![GitHub release](https://img.shields.io/github/release/docker/compose.svg?label=latest)](https://github.com/docker/compose/releases/latest)
 
 ## Java Dev Tools
-* [maven](https://maven.apache.org/)
+* [maven](https://maven.apache.org/)--recv-keys
 * [Oracle JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 * TBD - [IntelliJ IDEA](https://www.jetbrains.com/idea/) (Community 2017.3.2)
 * TBD - JBDS / Eclipse

@@ -1,5 +1,6 @@
 # Contains installations that are needed on all machines, including servers etc
 # ============================================================================
+
 # Install packages
 - name: "Installing Base Software"
   become: yes
@@ -10,6 +11,7 @@
   - ca-certificates
   - curl
   - software-properties-common
+  - unzip
 
 
 # Copying files

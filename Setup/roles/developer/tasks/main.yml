@@ -1,5 +1,6 @@
 # Containes installations for tools used for development across multiple languages
 # ================================================================================
+
 # Add Atom repo
 - name: "Registering Atom Repo"
   become: yes
