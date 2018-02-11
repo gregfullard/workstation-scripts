@@ -7,18 +7,18 @@ $ source ./hacking/env-setup
 $ sudo easy_install pip
 $ sudo pip install -r ./requirements.txt
 
-$ echo "127.0.0.1" > /home/gregf/WorkstationScripts/Ansible/ansible_hosts
-$ export ANSIBLE_INVENTORY=/home/gregf/WorkstationScripts/Ansible/ansible_hosts
+$ echo "127.0.0.1" > ~/WorkstationScripts/Ansible/ansible_hosts
+$ export ANSIBLE_INVENTORY=~/WorkstationScripts/Ansible/ansible_hosts
 
 Side Note: If you include localhost as a machine in inventory, then Ansible will try to connect to it via ssh
 This will require an SSH server on your local machine.
 $ sudo apt-get install openssh-server
 
 Now you can test the installation with:
-$ ansible all -m ping --ask-pass
+$ ansible -m ping -c local 127.0.0.1
 You should get the following back:
 127.0.0.1 | SUCCESS => {
-    "changed": false, 
+    "changed": false,
     "ping": "pong"
 }
 
