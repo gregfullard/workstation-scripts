@@ -22,9 +22,10 @@ sudo apt-get -y install git
 # Clone the workstation scripts folder
 echo '**************** Clone the workstation scripts folder'
 echo '**************** (If it already exists, make a zzz backup of the existing one)'
-if [ -d "~/WorkstationScripts" ]
+homefolder=~
+if [ -d "$homefolder/WorkstationScripts" ]
 then
-    echo 'Directory ~/WorkstationScripts exists already'
+    echo 'Directory '$homefolder'/WorkstationScripts exists already'
     now=$(date +"%Y%m%d_%H%M%S")
     cp -r ./WorkstationScripts ./zzzWorkstationScripts_$now
     sudo rm ./WorkstationScripts -R
