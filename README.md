@@ -86,10 +86,11 @@ The following data needs to be synched for a fully operational Environment
 # Understanding the project
 You will find the following sub-folders in this repo:
  * Root folder contains the bootstrap script. It will get everthing already
- * Ansible
-  * Not sure if I'll still use these
  * Backup
   * Contains scripts that I use for backup and retrievals
  * Setup
-  * Contains sub folders for each of the setups that I do
-  * For each setup, there is a hosts file, along with ansiblie roles and tasks
+  * Contains ansible hosts files. One file for each of my "setup domains"
+  * Contains a set of Ansible tasks grouped into roles. These are referenced from the playbooks
+  * For each setup domain, there is a playbook file which calls the roles that it needs
+ * Ansible
+  * Not sure if I'll still use this folder

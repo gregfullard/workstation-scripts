@@ -62,8 +62,8 @@ sudo apt-get -y install openssh-server
 ansible -m ping -c local 127.0.0.1
 
 # Run Ansible playbook
-cd ~/WorkstationScripts/Setup/DevWorkstation
-ansible-playbook -K dev-workstation-playbook.yml
+cd ~/WorkstationScripts/Setup
+ansible-playbook -K -i hosts-dev-workstation dev-workstation-playbook.yml
 
 echo '****************'
 echo '**************** Done'
