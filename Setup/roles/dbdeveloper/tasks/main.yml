@@ -1,9 +1,7 @@
 # Contains installations that are needed by DB developers
 # =======================================================
 # Install packages
-#- name: "Installing Base Software"
-#  apt: pkg={{ item }} state=installed
-#  with_items:
-#  - dnsutils
-
-# MySQL
+- name: "Installing DB Developer Software"
+  apt: pkg={{ item }} state=installed
+  with_items:
+  - mysql-workbench
