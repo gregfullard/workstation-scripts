@@ -48,11 +48,16 @@
     state: present
 
 # InSync
-- name: Add Insync public key
-  apt_key:
-    id: A684470CACCAF35C
-    keyserver: keyserver.ubuntu.com
-    state: present
+#- name: Add Insync public key
+#  become: yes
+#  apt_key:
+#    id: A684470CACCAF35C
+#    keyserver: keyserver.ubuntu.com
+#    state: present
+
+- name: "Insync key"
+  become: yes
+  shell: apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ACCAF35C
 
 - name: "Ensure Insync repo present"
   become: yes
