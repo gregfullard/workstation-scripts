@@ -28,6 +28,7 @@ Ansible playbooks.
 * TBD - [virtualbox](https://www.virtualbox.org/)
 
 ## Editors & IDEs
+* TBD - Nano
 * TBD - Atom
 * TBD - Eclipse
 * TBD - [IntelliJ IDEA](https://www.jetbrains.com/idea/) (Community 2017.3.2)
@@ -82,14 +83,13 @@ The following data needs to be synched for a fully operational Environment
 * TBD - Launcher size
 * TBD - Printer config
 
-
-
-
 # Understanding the project
 You will find the following sub-folders in this repo:
+ * Root folder contains the bootstrap script. It will get everthing already
  * Ansible
-  * Contains Ansible playbooks for various things I might want to do on the machine
+  * Not sure if I'll still use these
  * Backup
   * Contains scripts that I use for backup and retrievals
  * Setup
-  * Contains bash scripts for initial setup of the machine
+  * Contains sub folders for each of the setups that I do
+  * For each setup, there is a hosts file, along with ansiblie roles and tasks

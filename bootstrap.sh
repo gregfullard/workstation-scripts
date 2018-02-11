@@ -11,8 +11,12 @@ echo '****************'
 # Add all repos needed for bootstrapping
 echo '****************'
 echo '**************** Ensure Repositories are available'
-sudo apt-add-repository ppa:ansible/ansible
-sudo apt-add-repository ppa:git-core/ppa
+if ! grep -q "ansible/ansible" /etc/apt/sources.list /etc/apt/sources.list.d/*; then
+  sudo apt-add-repository ppa:ansible/ansible
+fi
+if ! grep -q "git-core/ppa" /etc/apt/sources.list /etc/apt/sources.list.d/*; then
+  sudo apt-add-repository ppa:git-core/ppa
+fi
 sudo apt-get update
 sudo apt-get -y upgrade
 
@@ -36,6 +40,8 @@ fi
 git clone https://github.com/gregfullard/workstation-scripts.git WorkstationScripts
 
 # Install Ansible
+# Note: ansible installs its default hosts file and config file at /etc/ansible_hosts
+# We won't be working with those though
 echo '****************'
 echo '**************** Install Ansible'
 sudo apt-get -y install ansible
@@ -44,6 +50,20 @@ sudo apt-get -y install ansible
 echo '****************'
 echo '**************** Install OpenSSH server'
 sudo apt-get -y install openssh-server
+
+# Create ssh key and copy to the host machine (localhost) to enable easy SSH connection
+echo '****************'
+echo '**************** We will now create and install some SSH keys that will enable automated configuration'
+echo '**************** Note: You will need to take some manual steps here'
+ssh-keygen
+ssh-copy-id localhost
+
+# Double check Ansible connection to local machine
+ansible -m ping -c local 127.0.0.1
+
+# Run Ansible playbook
+cd ~/WorkstationScripts/Setup/DevWorkstation
+ansible-playbook -K dev-workstation-playbook.yml
 
 echo '****************'
 echo '**************** Done'

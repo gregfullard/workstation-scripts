@@ -1,0 +1,2 @@
+- name: "Installing Nano"
+  apt: pkg=nano state=installed
