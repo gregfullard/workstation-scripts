@@ -33,10 +33,10 @@ Ansible playbooks.
 * [vlc](https://www.videolan.org/vlc/index.html) (Used by kdenlive)
 * [Google Chrome](https://www.google.com/chrome/browser/desktop/index.html)
 * [InSync](https://www.insynchq.com/)
+* [zoom](https://zoom.us/)
 * TBD - Password manager
 * TBD - Wine
 * TBD - WineTricks
-* TBD - Zoom
 * TBD - Thunderbird
 * TBD - [Dropbox](https://www.dropbox.com/)
 * TBD - Slack
