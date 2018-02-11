@@ -13,7 +13,6 @@
   - breeze-icon-theme
   - vlc
   - kdenlive
-  - zoom
 
 # Create Folders
 - name: "Create folder :: Software"
@@ -26,7 +25,6 @@
   file: path=/home/{{ user_name }}/Greg_OfflineData state=directory owner={{ user_name }} group={{ user_name }}
 - name: "Create folder :: Repos"
   file: path=/home/{{ user_name }}/Repos state=directory owner={{ user_name }} group={{ user_name }}
-
 
 # Google Chrome
 # via http://linuxg.net/how-to-install-google-chrome-42-stable-on-the-most-popular-linux-systems-via-the-official-google-repository/
@@ -66,3 +64,15 @@
   apt:
     name: "insync"
     state: present
+
+# Zoom
+# Download Deb
+- name: "Download Zoom DEB"
+  get_url:
+       url="https://zoom.us/client/latest/zoom_amd64.deb"
+       dest="/home/{{ user_name }}/zoom_amd64.deb"
+
+# Install zoom
+- name: Install .deb files
+  become: yes
+  apt: deb="/home/{{ user_name }}/zoom_amd64.deb"
