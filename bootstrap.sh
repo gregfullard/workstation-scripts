@@ -52,11 +52,11 @@ echo '**************** Install OpenSSH server'
 sudo apt-get -y install openssh-server
 
 # Create ssh key and copy to the host machine (localhost) to enable easy SSH connection
-echo '****************'
-echo '**************** We will now create and install some SSH keys that will enable automated configuration'
-echo '**************** Note: You will need to take some manual steps here'
-ssh-keygen
-ssh-copy-id localhost
+#echo '****************'
+#echo '**************** We will now create and install some SSH keys that will enable automated configuration'
+#echo '**************** Note: You will need to take some manual steps here'
+#ssh-keygen
+#ssh-copy-id localhost
 
 # Double check Ansible connection to local machine
 ansible -m ping -c local 127.0.0.1
