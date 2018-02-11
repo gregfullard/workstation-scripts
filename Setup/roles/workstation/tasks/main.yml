@@ -29,11 +29,11 @@
 # apt tasks file for ansible-role-chrome
 # via http://linuxg.net/how-to-install-google-chrome-42-stable-on-the-most-popular-linux-systems-via-the-official-google-repository/
 
-- name: "apt | ensure Google linux signing key present"
+- name: "Ensure Google linux signing key present"
   become: yes
   apt_key: url=https://dl-ssl.google.com/linux/linux_signing_key.pub state=present
 
-- name: "apt | ensure Google chrome repo present"
+- name: "Ensure Google chrome repo present"
   become: yes
   apt_repository:
     repo: "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main"
@@ -41,7 +41,7 @@
     state: present
     update_cache: yes
 
-- name: "apt | ensure Google chrome present"
+- name: "Ensure Google chrome present"
   become: yes
   apt:
     name: "google-chrome-stable"

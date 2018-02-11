@@ -1,6 +1,6 @@
 # Containes installations for tools used for development across multiple languages
 # ================================================================================
-# Install packages
+# Install Easy packages
 - name: "Installing Developer Software"
   become: yes
   apt: pkg={{ item }} state=installed
@@ -10,3 +10,25 @@
   - glogg
   - retext
 #  - docker-engine
+
+# Install docker
+- name: Fail if not a supported release of Ubuntu
+  fail:
+    msg: "{{ ansible_distribution_version }} is not an acceptable version of Ubuntu for this role"
+  when: ansible_lsb.id|lower == "ubuntu" and ansible_distribution_version|version_compare('14.04', '<')
+
+- name: Fail if not a new release of Debian
+  fail:
+    msg: "{{ ansible_distribution_version }} is not an acceptable version of Debian for this role"
+  when: ansible_lsb.id|lower == "debian" and ansible_distribution_version|version_compare('8.5', '<')
+
+- name: Fail if using python3 with Ansible<2.3
+  fail:
+    msg: "Ansible 2.3+ is required to use Python3 interpreter."
+  when: ansible_version.full | version_compare('2.3', '<') and ansible_python_interpreter is defined and 'python3' in ansible_python_interpreter
+
+- name: "Installing Docker Engine"
+  become: yes
+  apt: pkg={{ item }} state=installed
+  with_items:
+  - docker-engine
