@@ -2,13 +2,17 @@
 # ======================================================================
 # Install packages
 - name: "Installing Workstation Software"
+  become: yes
   apt: pkg={{ item }} state=installed
   with_items:
   - virtualbox
   - shutter
   - vokoscreen
   - gscan2pdf
+  - breeze-icon-theme
+  - vlc
   - kdenlive
+
 
 # Create Folders
 - name: "Create folder :: Software"
