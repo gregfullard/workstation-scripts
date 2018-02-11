@@ -5,6 +5,10 @@
   apt: pkg={{ item }} state=installed
   with_items:
   - dnsutils
+  - apt-transport-https
+  - ca-certificates
+  - curl
+  - software-properties-common
 
 
 # Copying files
