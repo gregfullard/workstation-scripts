@@ -1,5 +1,12 @@
 # Containes installations for tools used for development across multiple languages
 # ================================================================================
+# Add Atom repo
+- name: "Registering Atom Repo"
+  become: yes
+  apt_repository:
+    repo: "ppa:webupd8team/atom"
+    state: present
+
 # Install Easy packages
 - name: "Installing Developer Software"
   become: yes
@@ -9,8 +16,9 @@
   - git
   - glogg
   - retext
-#  - docker-engine
+  - atom
 
+# DOCKER
 # Install dockerhttps://download.docker.com/linux/ubuntu/gpg
 - name: Fail if not a supported release of Ubuntu
   fail:
@@ -26,6 +34,7 @@
   fail:
     msg: "Ansible 2.3+ is required to use Python3 interpreter."
   when: ansible_version.full | version_compare('2.3', '<') and ansible_python_interpreter is defined and 'python3' in ansible_python_interpreter
+
 
 #- name: Uninstall old veInstalling Developer Softwarersions of Docker
 #  become: yes
