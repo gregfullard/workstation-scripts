@@ -2,9 +2,11 @@
 - hosts: localhost
   vars:
     user_name: gregf
-  become: true
+  #become: true
   roles:
   - basic
   - workstation
   - developer
   - javadeveloper
+  - dbdeveloper
+  - testdeveloper
