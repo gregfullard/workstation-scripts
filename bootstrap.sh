@@ -9,6 +9,7 @@ echo '**************** This script will set up your machine in the standard way 
 echo '****************'
 
 # Add all repos needed for bootstrapping
+echo '****************'
 echo '**************** Ensure Repositories are available'
 sudo apt-add-repository ppa:ansible/ansible
 sudo apt-add-repository ppa:git-core/ppa
@@ -16,27 +17,31 @@ sudo apt-get update
 sudo apt-get -y upgrade
 
 # Install git
+echo '****************'
 echo '**************** Install Git'
 sudo apt-get -y install git
 
 # Clone the workstation scripts folder
+echo '****************'
 echo '**************** Clone the workstation scripts folder'
-echo '**************** (If it already exists, make a zzz backup of the existing one)'
 homefolder=~
 if [ -d "$homefolder/WorkstationScripts" ]
 then
     echo 'Directory '$homefolder'/WorkstationScripts exists already. We will back it up and create a new one from git'
     now=$(date +"%Y%m%d_%H%M%S")
     cp -r ./WorkstationScripts ./zzzWorkstationScripts_$now
+    echo 'Existing '$homefolder'/WorkstationScripts folder backed up to'./zzzWorkstationScripts_$now
     sudo rm ./WorkstationScripts -R
 fi
 git clone https://github.com/gregfullard/workstation-scripts.git WorkstationScripts
 
 # Install Ansible
+echo '****************'
 echo '**************** Install Ansible'
 sudo apt-get -y install ansible
 
 # openssh server (needed by Ansible to connecto localhost via ssh)
+echo '****************'
 echo '**************** Install OpenSSH server'
 sudo apt-get -y install openssh-server
 
