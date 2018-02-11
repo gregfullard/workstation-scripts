@@ -1,4 +1,4 @@
-# Contains installations that is needed on all workstation machine only
+# Contains installations that are needed on all workstation machine only
 # ======================================================================
 # Install packages
 - name: "Installing Workstation Software"

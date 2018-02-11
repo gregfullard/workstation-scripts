@@ -1,4 +1,4 @@
-# Contains installations that is needed on all machines, including servers etc
+# Contains installations that are needed on all machines, including servers etc
 # ============================================================================
 # Install packages
 - name: "Installing Base Software"
