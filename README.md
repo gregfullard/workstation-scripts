@@ -14,57 +14,69 @@ That script will begin the bootstrapping process, which will clone this repo to 
 into the home/WorkstationScripts folder and install various applications as defined in then
 Ansible playbooks.
 
-# What gets Installed
-## Dev Tools
-* [git](https://git-scm.com/)
+# What gets Installed (These categories align with the ansible roles)
+## Base tools
+* dnsutils
+
+## Workstation tools
+* [ansible](https://www.ansible.com/)
+* [Shutter](http://shutter-project.org/)
+* [virtualbox](https://www.virtualbox.org/)
+* [vokoscreen](https://github.com/vkohaupt/vokoscreen)
+* [gscan2pdf](http://gscan2pdf.sourceforge.net/)
+* [kdenlive](https://kdenlive.org/)
+* [breeze-icon-theme](https://github.com/KDE/breeze-icons) (Used by kdenlive)
+* [vlc](https://www.videolan.org/vlc/index.html) (Used by kdenlive)
 * TBD - Password manager
-* TBD - JBDS
-* TBD - Glogg
-
-## SDKs & Runtimes
-* TBD - [maven](https://maven.apache.org/) ![Installed](https://img.shields.io/badge/current\-v3.5.2-blue.svg)
-* TBD - [docker](https://www.docker.com/)
-* TBD - [docker-compose](https://docs.docker.com/compose/) ![Installed](https://img.shields.io/badge/current\-v1.18.0-blue.svg) [![GitHub release](https://img.shields.io/github/release/docker/compose.svg?label=latest)](https://github.com/docker/compose/releases/latest)
-* TBD - [virtualbox](https://www.virtualbox.org/)
-
-## Editors & IDEs
-* TBD - Nano
-* TBD - Atom
-* TBD - Eclipse
-* TBD - [IntelliJ IDEA](https://www.jetbrains.com/idea/) (Community 2017.3.2)
-* TBD - [MySQL Workbench](https://www.mysql.com/products/workbench/)
-* TBD - ReText
-* TBD - Eclipse plugin : Sling
-* TBD - Eclipse plugin : rest
-* TBD - Eclipse plugin : AEM
-
-## Other utilities
-* TBD - [Google Chrome](https://www.google.com/chrome/browser/desktop/index.html)
-* TBD - [Dropbox](https://www.dropbox.com/)
-* TBD - Shutter
-* TBD - Chrome Pluging - ARC
-* TBD - SOAPUI
+* TBD - Wine
+* TBD - WineTricks
 * TBD - Zoom
 * TBD - Thunderbird
 * TBD - InSync
-* TBD - Kdenlive
-* TBD - Anaconda
+* TBD - [Dropbox](https://www.dropbox.com/)
+* [Google Chrome](https://www.google.com/chrome/browser/desktop/index.html)
 * TBD - Slack
 * TBD - Tex
 * TBD - Printer Driver
 * TBD - Scanner Driver
-* TBD - Vokoscreen
-* TBD - Gscan2Pdf
 
-## Servers & Dockers
+## Dev Tools
+* [nano](https://www.nano-editor.org/)
+* [git](https://git-scm.com/)
+* [glogg](https://glogg.bonnefon.org/)
+* [retext](https://github.com/retext-project/retext)
+* TBD - [atom](https://atom.io/)
+* TBD - [docker](https://www.docker.com/)
+* TBD - [docker-compose](https://docs.docker.com/comp* TBD - Vokoscreenose/) ![Installed](https://img.shields.io/badge/current\-v1.18.0-blue.svg) [![GitHub release](https://img.shields.io/github/release/docker/compose.svg?label=latest)](https://github.com/docker/compose/releases/latest)
+
+## Java Dev Tools
+* [maven](https://maven.apache.org/)
+* [Oracle JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+* TBD - [IntelliJ IDEA](https://www.jetbrains.com/idea/) (Community 2017.3.2)
+* TBD - JBDS / Eclipse
+* TBD - Eclipse plugin : Sling
+* TBD - Eclipse plugin : rest
+* TBD - Eclipse plugin : AEM
+
+## Database Developer Tools
+* [MySQL Workbench](https://www.mysql.com/products/workbench/)
+
+## Test Developer Tools
+* TBD - Chrome Pluging - ARC
+* TBD - SOAPUI
+
+## Other utilities
+* TBD - Anaconda
+
+## Servers & Containers
 * TBD -
 
 # Folders and Data
 The following folders are created
-* TBD - ~/Email
-* TBD - ~/Greg_OfflineData
-* TBD - ~/GoogleDrive
-* TBD - ~/Repos
+* ~/Email
+* ~/Greg_OfflineData
+* ~/GoogleDrive
+* ~/Repos
 
 The following data needs to be synched for a fully operational Environment
 * TBD - Email from Drobo Backup
