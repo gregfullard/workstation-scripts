@@ -51,21 +51,21 @@
 # Verify that Docker CE is installed correctly by running the hello-world image.
 # sudo docker run hello-world
 
-- name: "Adding Docker GPG key"
-  become: yes
-  apt_key: url=https://download.docker.com/linux/ubuntu/gpg state=present
+#- name: "Adding Docker GPG key"
+#  become: yes
+#  apt_key: url=https://download.docker.com/linux/ubuntu/gpg state=present
 
-- name: "Registering Docker Repo"
-  become: yes
-  apt_repository:
-    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-    state: present
+#- name: "Registering Docker Repo"
+#  become: yes
+#  apt_repository:
+#    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+#    state: present
 
-- name: "Installing Docker CE"
-  become: yes
-  apt: pkg={{ item }} state=installed
-  with_items:
-  - docker-ce
+#- name: "Installing Docker CE"
+#  become: yes
+#  apt: pkg={{ item }} state=installed
+#  with_items:
+#  - docker-ce
 
-- name: "Testing docker"
-  shell: docker run hello-world
+#- name: "Testing docker"
+#  shell: docker run hello-world
