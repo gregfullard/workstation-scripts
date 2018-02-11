@@ -1,0 +1,23 @@
+# Contains installations that is needed on all workstation machine only
+# ======================================================================
+# Install packages
+- name: "Installing Workstation Software"
+  apt: pkg={{ item }} state=installed
+  with_items:
+  - virtualbox
+  - shutter
+  - vokoscreen
+  - gscan2pdf
+  - kdenlive
+
+# Create Folders
+- name: "Create folder :: Software"
+  file: path=/home/{{ user_name }}/Software state=directory owner={{ user_name }} group={{ user_name }}
+- name: "Create folder :: GoogleDrive"
+  file: path=/home/{{ user_name }}/GoogleDrive state=directory owner={{ user_name }} group={{ user_name }}
+- name: "Create folder :: Email"
+  file: path=/home/{{ user_name }}/Email state=directory owner={{ user_name }} group={{ user_name }}
+- name: "Create folder :: Greg_OfflineData"
+  file: path=/home/{{ user_name }}/Greg_OfflineData state=directory owner={{ user_name }} group={{ user_name }}
+- name: "Create folder :: Repos"
+  file: path=/home/{{ user_name }}/Repos state=directory owner={{ user_name }} group={{ user_name }}

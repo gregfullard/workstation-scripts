@@ -1,0 +1,5 @@
+# Install Java developer tools
+- name: "Installing Java Developer Software"
+  apt: pkg={{ item }} state=installed
+  with_items:
+  - maven

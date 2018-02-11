@@ -1,0 +1,10 @@
+# Containes installations for tools used for development across multiple languages
+# ================================================================================
+# Install packages
+- name: "Installing Developer Software"
+  apt: pkg={{ item }} state=installed
+  with_items:
+  - nano
+  - git
+  - glogg
+  - retext
