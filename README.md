@@ -17,6 +17,10 @@ Ansible playbooks.
 # What gets Installed (These categories align with the ansible roles)
 ## Base tools
 * dnsutils
+* apt-transport-https
+* ca-certificates
+* curl
+* software-properties-common
 
 ## Workstation tools
 * [ansible](https://www.ansible.com/)
@@ -27,14 +31,14 @@ Ansible playbooks.
 * [kdenlive](https://kdenlive.org/)
 * [breeze-icon-theme](https://github.com/KDE/breeze-icons) (Used by kdenlive)
 * [vlc](https://www.videolan.org/vlc/index.html) (Used by kdenlive)
+* [Google Chrome](https://www.google.com/chrome/browser/desktop/index.html)
+* [InSync](https://www.insynchq.com/)
 * TBD - Password manager
 * TBD - Wine
 * TBD - WineTricks
 * TBD - Zoom
 * TBD - Thunderbird
-* TBD - InSync
 * TBD - [Dropbox](https://www.dropbox.com/)
-* [Google Chrome](https://www.google.com/chrome/browser/desktop/index.html)
 * TBD - Slack
 * TBD - Tex
 * TBD - Printer Driver
@@ -45,7 +49,7 @@ Ansible playbooks.
 * [git](https://git-scm.com/)
 * [glogg](https://glogg.bonnefon.org/)
 * [retext](https://github.com/retext-project/retext)
-* TBD - [atom](https://atom.io/)
+* [atom](https://atom.io/)
 * TBD - [docker](https://www.docker.com/)
 * TBD - [docker-compose](https://docs.docker.com/comp* TBD - Vokoscreenose/) ![Installed](https://img.shields.io/badge/current\-v1.18.0-blue.svg) [![GitHub release](https://img.shields.io/github/release/docker/compose.svg?label=latest)](https://github.com/docker/compose/releases/latest)
 
@@ -85,6 +89,7 @@ The following data needs to be synched for a fully operational Environment
 * TBD - Some repos via Git
 
 # Custom configuration
+* TBD - Insync folders to sync
 * TBD - Thunderbird
 * TBD - Drobo shortcut
 * TBD - GoogleDrive shortcut

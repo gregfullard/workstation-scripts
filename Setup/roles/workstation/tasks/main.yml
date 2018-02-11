@@ -26,9 +26,9 @@
 - name: "Create folder :: Repos"
   file: path=/home/{{ user_name }}/Repos state=directory owner={{ user_name }} group={{ user_name }}
 
-# apt tasks file for ansible-role-chrome
-# via http://linuxg.net/how-to-install-google-chrome-42-stable-on-the-most-popular-linux-systems-via-the-official-google-repository/
 
+# Google Chrome
+# via http://linuxg.net/how-to-install-google-chrome-42-stable-on-the-most-popular-linux-systems-via-the-official-google-repository/
 - name: "Ensure Google linux signing key present"
   become: yes
   apt_key: url=https://dl-ssl.google.com/linux/linux_signing_key.pub state=present
@@ -45,4 +45,25 @@
   become: yes
   apt:
     name: "google-chrome-stable"
+    state: present
+
+# InSync
+- name: Add Insync public key
+  apt_key:
+    id: A684470CACCAF35C
+    keyserver: keyserver.ubuntu.com
+    state: present
+
+- name: "Ensure Insync repo present"
+  become: yes
+  apt_repository:
+    repo: "deb http://apt.insynchq.com/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} non-free contrib "
+    filename: insync
+    state: present
+    update_cache: yes
+
+- name: "Ensure Insync present"
+  become: yes
+  apt:
+    name: "vlc"
     state: present
