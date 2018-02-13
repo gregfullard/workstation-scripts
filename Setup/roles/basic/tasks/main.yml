@@ -11,7 +11,9 @@
   - ca-certificates
   - curl
   - software-properties-common
+  - tar
   - unzip
+  - python
 
 
 # Copying files

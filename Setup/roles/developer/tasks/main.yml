@@ -18,6 +18,14 @@
   - glogg
   - retext
   - atom
+  - texlive-full
+  - texmaker
+
+# Install sphinx
+- name: "Install Python packages: {{ python_packages_to_install }}"
+  become: yes
+  pip: name={{ item }}
+  with_items: Sphinx
 
 # DOCKER
 # Install dockerhttps://download.docker.com/linux/ubuntu/gpg

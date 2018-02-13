@@ -13,6 +13,7 @@
   - breeze-icon-theme
   - vlc
   - kdenlive
+  - gimp
 
 # Create Folders
 - name: "Create folder :: Software"

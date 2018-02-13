@@ -21,6 +21,7 @@ Ansible playbooks.
 * ca-certificates
 * curl
 * software-properties-common
+* python
 
 ## Workstation tools
 * [ansible](https://www.ansible.com/)
@@ -34,15 +35,15 @@ Ansible playbooks.
 * [Google Chrome](https://www.google.com/chrome/browser/desktop/index.html)
 * [InSync](https://www.insynchq.com/)
 * [zoom](https://zoom.us/)
-* TBD - Password manager
-* TBD - Wine
+* [gimp](https://www.gimp.org/)
+* TBD - [wine](https://www.winehq.org/)
 * TBD - WineTricks
 * TBD - Thunderbird
 * TBD - [Dropbox](https://www.dropbox.com/)
-* TBD - Slack
-* TBD - Tex
 * TBD - Printer Driver
 * TBD - Scanner Driver
+* TBD - Slack
+* TBD - Password manager
 
 ## Dev Tools
 * [nano](https://www.nano-editor.org/)
@@ -50,6 +51,9 @@ Ansible playbooks.
 * [glogg](https://glogg.bonnefon.org/)
 * [retext](https://github.com/retext-project/retext)
 * [atom](https://atom.io/)
+* [sphinx](http://www.sphinx-doc.org)
+* [texlive-full](https://www.tug.org/texlive/)
+* [texmaker](http://www.xm1math.net/texmaker/)
 * TBD - [docker](https://www.docker.com/)
 * TBD - [docker-compose](https://docs.docker.com/comp* TBD - Vokoscreenose/) ![Installed](https://img.shields.io/badge/current\-v1.18.0-blue.svg) [![GitHub release](https://img.shields.io/github/release/docker/compose.svg?label=latest)](https://github.com/docker/compose/releases/latest)
 
@@ -66,8 +70,8 @@ Ansible playbooks.
 * [MySQL Workbench](https://www.mysql.com/products/workbench/)
 
 ## Test Developer Tools
+* [soapui](https://www.soapui.org/)
 * TBD - Chrome Pluging - ARC
-* TBD - SOAPUI
 
 ## Other utilities
 * TBD - Anaconda
