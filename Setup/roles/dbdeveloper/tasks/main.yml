@@ -1,7 +1,7 @@
 # Contains installations that are needed by DB developers
 # =======================================================
 # Install packages
-- name: "Installing DB Developer Software"
+- name: "BASE | Installing DB Developer Software"
   become: yes
   apt: pkg={{ item }} state=installed
   with_items:

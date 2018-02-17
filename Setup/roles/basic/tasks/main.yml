@@ -2,7 +2,7 @@
 # ============================================================================
 
 # Install packages
-- name: "Installing Base Software"
+- name: "BASE | Installing Base Software"
   become: yes
   apt: pkg={{ item }} state=installed
   with_items:

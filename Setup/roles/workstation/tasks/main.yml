@@ -2,7 +2,7 @@
 # ======================================================================
 
 # Install Easy packages
-- name: "Installing Base Workstation Software"
+- name: "BASE | Installing Base Workstation Software"
   become: yes
   apt: pkg={{ item }} state=installed
   with_items:
@@ -17,24 +17,24 @@
   - thunderbird
 
 # Create Folders
-- name: "Create folder :: Software"
+- name: "FOLDER | Software"
   file: path=/home/{{ user_name }}/Software state=directory owner={{ user_name }} group={{ user_name }}
-- name: "Create folder :: GoogleDrive"
+- name: "FOLDER | GoogleDrive"
   file: path=/home/{{ user_name }}/GoogleDrive state=directory owner={{ user_name }} group={{ user_name }}
-- name: "Create folder :: Email"
+- name: "FOLDER | Email"
   file: path=/home/{{ user_name }}/Email state=directory owner={{ user_name }} group={{ user_name }}
-- name: "Create folder :: Greg_OfflineData"
+- name: "FOLDER | Greg_OfflineData"
   file: path=/home/{{ user_name }}/Greg_OfflineData state=directory owner={{ user_name }} group={{ user_name }}
-- name: "Create folder :: Repos"
+- name: "FOLDER | Repos"
   file: path=/home/{{ user_name }}/Repos state=directory owner={{ user_name }} group={{ user_name }}
 
 # Google Chrome
 # via http://linuxg.net/how-to-install-google-chrome-42-stable-on-the-most-popular-linux-systems-via-the-official-google-repository/
-- name: "CHROME :: Ensure Google linux signing key present"
+- name: "CHROME | Ensure Google linux signing key present"
   become: yes
   apt_key: url=https://dl-ssl.google.com/linux/linux_signing_key.pub state=present
 
-- name: "CHROME :: Ensure Google chrome repo present"
+- name: "CHROME | Ensure Google chrome repo present"
   become: yes
   apt_repository:
     repo: "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main"
@@ -42,7 +42,7 @@
     state: present
     update_cache: yes
 
-- name: "CHROME :: Ensure Google chrome present"
+- name: "CHROME | Ensure Google chrome present"
   become: yes
   apt:
     name: "google-chrome-stable"
@@ -52,11 +52,11 @@
 #- name: "Insync key"
 #  become: yes
 #  shell: apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ACCAF35C
-- name: "INSYNC :: Add Insync key"
+- name: "INSYNC | Add Insync key"
   become: yes
   apt_key: keyserver=keyserver.ubuntu.com id=ACCAF35C
 
-- name: "INSYNC :: Ensure Insync repo present"
+- name: "INSYNC | Ensure Insync repo present"
   become: yes
   apt_repository:
     repo: "deb http://apt.insynchq.com/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} non-free contrib "
@@ -64,7 +64,7 @@
     state: present
     update_cache: yes
 
-- name: "INSYNC :: Ensure Insync present"
+- name: "INSYNC | Ensure Insync present"
   become: yes
   apt:
     name: "insync"
@@ -72,13 +72,13 @@
 
 # Zoom
 # Download Deb
-- name: "ZOOM :: Download Zoom DEB"
+- name: "ZOOM | Download Zoom DEB"
   get_url:
        url="https://zoom.us/client/latest/zoom_amd64.deb"
        dest="/home/{{ user_name }}/Downloads/zoom_amd64.deb"
 
 # Install zoom
-- name: "ZOOM :: Install .deb files"
+- name: "ZOOM | Install .deb files"
   become: yes
   apt: deb="/home/{{ user_name }}/Downloads/zoom_amd64.deb"
 
@@ -86,7 +86,7 @@
   # Enable i386 architecture
   # See: https://wiki.winehq.org/Ubuntu
   # https://stackoverflow.com/questions/29842246/how-to-install-x86-architecture-for-java-using-ansible/33377943#33377943
-- name: "WINE :: Enable i386 architecture"
+- name: "WINE | Enable i386 architecture"
   become: yes
   lineinfile:
     dest: '/var/lib/dpkg/arch'
@@ -95,13 +95,13 @@
     state: 'present'
 
   # Update Packages
-- name: "WINE :: Update package lists for Wine installation"
+- name: "WINE | Update package lists for Wine installation"
   become: yes
   apt:
     update_cache: True
 
 # Install Easy packages
-- name: "WINE :: Install packages"
+- name: "WINE | Install packages"
   become: yes
   apt: pkg={{ item }} state=installed
   with_items:

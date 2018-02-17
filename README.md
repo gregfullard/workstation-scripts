@@ -1,6 +1,7 @@
 # Howzit
 Scripts used on my workstation for initial setup, backup, etc.
 Strongly influenced by: https://github.com/pbassiner/dev-env
+Note: This set of scripts and playbooks are developed for Ubuntu ONLY
 
 # Run it
 ```shell
@@ -113,5 +114,3 @@ You will find the following sub-folders in this repo:
   * Contains ansible hosts files. One file for each of my "setup domains"
   * Contains a set of Ansible tasks grouped into roles. These are referenced from the playbooks
   * For each setup domain, there is a playbook file which calls the roles that it needs
- * Ansible
-  * Not sure if I'll still use this folder

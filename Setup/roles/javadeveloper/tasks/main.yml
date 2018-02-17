@@ -42,3 +42,6 @@
 #    - oracle-java7-installer
 #    - ca-certificates
 #  when: j7_from_downloaded_binaries is defined
+
+# eclipse
+- import_tasks: eclipse.yml
