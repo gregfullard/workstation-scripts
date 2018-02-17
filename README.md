@@ -114,3 +114,19 @@ You will find the following sub-folders in this repo:
   * Contains ansible hosts files. One file for each of my "setup domains"
   * Contains a set of Ansible tasks grouped into roles. These are referenced from the playbooks
   * For each setup domain, there is a playbook file which calls the roles that it needs
+
+# Reviewing when complete
+To review whether the configuration was successful, you can do the following at completion
+ * Check registered repos - Step 1
+  * cat /etc/apt/sources.list
+  * You should see the following in the list:
+  * TBD
+ * Check registered repos - Step 2
+  * ls /etc/apt/sources.list.d
+  * You should see the following files:
+  * ansible*
+  * git*
+  * google-chrome*
+  * insync*
+ * Super-key + "atom" to confirm Eclipse is installed
+ * Super-key + "eclipse" to confirm Eclipse is installed

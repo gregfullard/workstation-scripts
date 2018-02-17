@@ -3,6 +3,9 @@
 user_name: gregf
 home_folder: "/home/{{ user_name }}"
 
+# winehq
+winehq_apt_repo_url: deb https://dl.winehq.org/wine-builds/{{ ansible_distribution | lower }}/ {{ ansible_distribution_release }} main
+
 # SOAPUI
 soapui_version: 5.2.1
 soapui_install_dir: "{{ home_folder }}/Software/SOAPUI2"
