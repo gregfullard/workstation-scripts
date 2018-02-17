@@ -67,6 +67,10 @@ Ansible playbooks.
 * TBD - Eclipse plugin : rest
 * TBD - Eclipse plugin : AEM
 
+## AEM Dev tools
+* TBD - OAKRun
+* TBD - Vault
+
 ## Database Developer Tools
 * [MySQL Workbench](https://www.mysql.com/products/workbench/)
 
@@ -78,7 +82,24 @@ Ansible playbooks.
 * TBD - Anaconda
 
 ## Servers & Containers
-* TBD -
+* TBD - AEM
+* TBD - Sling
+* TBD - Jenkins
+* TBD - WildFly
+* TBD - ActiveMQ
+* TBD - Karaf
+* TBD - ELK
+* TBD - ApacheDSStudio
+* TBD - Felix
+* TBD - JBoss BPM
+* TBD - jbpm
+* TBD - JBoss EAP
+* TBD - JBoss Fuse
+* TBD - Minishift
+* TBD - OpenShift
+* TBD - NodeJS
+* TBD - ProM
+* TBD - Unomi
 
 # Folders and Data
 The following folders are created
@@ -86,12 +107,6 @@ The following folders are created
 * ~/Greg_OfflineData
 * ~/GoogleDrive
 * ~/Repos
-
-The following data needs to be synched for a fully operational Environment
-* TBD - Email from Drobo Backup
-* TBD - Greg_OfflineData from Drobo Backup
-* TBD - GoogleDrive folders via InSync
-* TBD - Some repos via Git
 
 # Custom configuration
 * TBD - Insync folders to sync
@@ -148,3 +163,18 @@ To review whether the configuration was successful, you can do the following at 
 # Manual steps still needed at the end (Make these less over time)
  * Restore non-VM files (using restore script in this repo)
  * Restore VM files (using restore script in this repo)
+ * Configure InSync folder synching
+ * Add Drobo shortcut
+ * Add Repos shortcut
+ * Add GoogleDrive shortcut
+ * Add Dropbox shortcut
+ * Add VMShare shortcut
+ * Configure Thunderbird profile to point to restored files
+ * Clone git repos for active development
+ * Download and Install JBDS
+
+# Reviewing Manual Steps
+ * Start up BasicTools VM. Check files on VMShare can be accessed
+ * Generate Sphinx docs for a cloned repo
+ * Verify GoogleDrive synching
+ * Verify Dropbox synching
