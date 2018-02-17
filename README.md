@@ -40,10 +40,10 @@ Ansible playbooks.
 * [wine](https://www.winehq.org/)
 * [winetricks](https://wiki.winehq.org/Winetricks)
 * [thunderbird](https://www.mozilla.org/en-US/thunderbird/)
-* TBD - [Dropbox](https://www.dropbox.com/)
 * TBD - Printer Driver
 * TBD - Scanner Driver
-* TBD - Slack
+* TBD - [slack](https://slack.com)
+* TBD - [Dropbox](https://www.dropbox.com/)
 * TBD - Password manager
 
 ## Dev Tools
@@ -130,3 +130,21 @@ To review whether the configuration was successful, you can do the following at 
   * insync*
  * Super-key + "atom" to confirm Eclipse is installed
  * Super-key + "eclipse" to confirm Eclipse is installed
+ * Super-key + "retext" to confirm Retext is installed
+ * Super-key + "glogg" to confirm Glogg is installed
+ * Super-key + "chrome" to confirm Chrome is installed
+ * Super-key + "virtualbox" to confirm installation
+ * Super-key + "vokoscreen" to confirm installation
+ * Super-key + "gscan2pdf" to confirm installation
+ * Super-key + "kdenlive" to confirm installation
+ * Super-key + "vlc" to confirm installation
+ * Super-key + "InSync" to confirm installation
+ * Super-key + "zoom" to confirm installation
+ * Super-key + "gimp" to confirm installation
+ * java --version to confirm Java 1.8 is Installed
+ * git --version
+ * maven --version
+
+# Manual steps still needed at the end (Make these less over time)
+ * Restore non-VM files (using restore script in this repo)
+ * Restore VM files (using restore script in this repo)
