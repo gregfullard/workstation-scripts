@@ -4,41 +4,47 @@
 # SOAPUI
 # ARC for Chrome
 
-- name: Install dependencies
+- name: "SOAPUI :: Install dependencies"
   become: yes
   apt: name={{ item }} state=latest
   with_items:
     - unzip
 
-- name: Create SoapUI Directory
+- name: "SOAPUI :: Create SoapUI Directory"
   become: yes
+  when: install_soapui == True
   file: name={{ soapui_install_dir }}
         state=directory
         owner={{ user_name }}
         group={{ user_name }}
 
-- name: Download SoapUI binaries
+- name: "SOAPUI :: Download SoapUI binaries"
+  when: install_soapui == True
   get_url: url=http://smartbearsoftware.com/distrib/soapui/{{ soapui_version }}/SoapUI-{{ soapui_version }}-linux-bin.tar.gz
     dest={{ home_folder }}/Downloads/soapui-{{ soapui_version }}.tar.gz
 
 # TBD - This one still needs to be improved
-- name: Untar SoapUI
+- name: "SOAPUI :: Untar SoapUI"
+  when: install_soapui == True
   unarchive:
     copy=no
     src={{ home_folder }}/Downloads/soapui-{{ soapui_version }}.tar.gz
     dest={{ soapui_install_dir }}
 
-- name: Create SoapUI version directory Symlink
+- name: "SOAPUI :: Create SoapUI version directory Symlink"
+  when: install_soapui == True
   file:
     src="{{ soapui_install_dir }}/SoapUI-{{ soapui_version }}"
     path="{{ soapui_install_dir }}/latest"
     state=link
 
-- name: Extract SoapUI icon from jar
+- name: "SOAPUI :: Extract SoapUI icon from jar"
+  when: install_soapui == True
   command: bash -c 'unzip -p soapui-{{ soapui_version }}.jar com/eviware/soapui/resources/images/favicon.png >./favicon.png'
            chdir={{ soapui_install_dir }}/latest/bin
 
-- name: Create symlink in bin folder
+- name: "SOAPUI :: Create symlink in bin folder"
+  when: install_soapui == True
   file:
     src={{ soapui_install_dir }}/latest/bin/soapui.sh
     dest=/usr/bin/soapui

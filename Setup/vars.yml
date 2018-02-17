@@ -1,1 +1,9 @@
 ---
+# General
+user_name: gregf
+home_folder: "/home/{{ user_name }}"
+  
+# SOAPUI
+install_soapui: False
+soapui_version: 5.2.1
+soapui_install_dir: "{{ home_folder }}/Software/SOAPUI2"
