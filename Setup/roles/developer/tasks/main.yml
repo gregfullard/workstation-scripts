@@ -1,15 +1,8 @@
 # Containes installations for tools used for development across multiple languages
 # ================================================================================
 
-# Add Atom repo
-- name: "Registering Atom Repo"
-  become: yes
-  apt_repository:
-    repo: "ppa:webupd8team/atom"
-    state: present
-
 # Install Easy packages
-- name: "Installing Developer Software"
+- name: "Installing Base Developer Software"
   become: yes
   apt: pkg={{ item }} state=installed
   with_items:
@@ -17,12 +10,25 @@
   - git
   - glogg
   - retext
-  - atom
   - texlive-full
   - texmaker
   - python-pip
   - python-dev
   - build-essential
+
+# Add Atom repo
+- name: "ATOM :: Registering Atom Repo"
+  become: yes
+  apt_repository:
+    repo: "ppa:webupd8team/atom"
+    state: present
+
+# Install Atom packages
+- name: "ATOM :: Installing Atom"
+  become: yes
+  apt: pkg={{ item }} state=installed
+  with_items:
+  - atom
 
 # Install sphinx
 - name: "SPHINX :: Install Sphinx with PIP"
