@@ -156,14 +156,15 @@ To review whether the configuration was successful, you can do the following at 
  * Super-key + "InSync" to confirm installation
  * Super-key + "zoom" to confirm installation
  * Super-key + "gimp" to confirm installation
- * java --version to confirm Java 1.8 is Installed
+ * java -version to confirm Java 1.8 is Installed
  * git --version
- * maven --version
+ * mvn --version
 
 # Manual steps still needed at the end (Make these less over time)
+ * Sign-in to chrome
+ * Configure InSync folder synching (Select GoogleDriveFolder)
  * Restore non-VM files (using restore script in this repo)
  * Restore VM files (using restore script in this repo)
- * Configure InSync folder synching
  * Add Drobo shortcut
  * Add Repos shortcut
  * Add GoogleDrive shortcut
@@ -172,6 +173,7 @@ To review whether the configuration was successful, you can do the following at 
  * Configure Thunderbird profile to point to restored files
  * Clone git repos for active development
  * Download and Install JBDS
+ * Configure VMs
 
 # Reviewing Manual Steps
  * Start up BasicTools VM. Check files on VMShare can be accessed

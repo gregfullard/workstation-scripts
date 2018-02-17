@@ -15,6 +15,8 @@
   - kdenlive
   - gimp
   - thunderbird
+  - cifs-utils
+  - smbclient
 
 # Create Folders
 - name: "FOLDER | Software"
