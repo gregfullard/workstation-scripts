@@ -20,9 +20,12 @@
   - atom
   - texlive-full
   - texmaker
+  - python-pip
+  - python-dev
+  - build-essential
 
 # Install sphinx
-- name: "Install Python packages: {{ python_packages_to_install }}"
+- name: "SPHINX :: Install Sphinx with PIP"
   become: yes
   pip: name={{ item }}
   with_items: Sphinx
