@@ -14,6 +14,7 @@
   - vlc
   - kdenlive
   - gimp
+  - thunderbird
 
 # Create Folders
 - name: "Create folder :: Software"
@@ -85,20 +86,25 @@
   # Enable i386 architecture
   # See: https://wiki.winehq.org/Ubuntu
   # https://stackoverflow.com/questions/29842246/how-to-install-x86-architecture-for-java-using-ansible/33377943#33377943
-#- name: Enable i386 architecture in dpkg
-#  lineinfile:
-#    dest: '/var/lib/dpkg/arch'
-#    line: '{{ item.arch }}'
-#    create: True
-#    state: '{{ item.state|d("present") }}'
-#  register: wine__register_arch_enabled
-#  when: (item.arch in [ 'i386', 'amd64' ])
-#  with_items:
-#    - arch: 'i386'
-#      state: '{{ "present" if (wine__architecture_i386_enabled | bool) else "absent" }}'
-#    - arch: '{{ ansible_kernel | regex_replace("^.*-", "") }}'
+- name: "WINE :: Enable i386 architecture"
+  become: yes
+  lineinfile:
+    dest: '/var/lib/dpkg/arch'
+    line: 'i386'
+    create: True
+    state: 'present'
+
   # Update Packages
-#- name: Update package lists for Wine installation
-#  apt:
-#    update_cache: True
-#  when: (wine__register_arch_enabled|changed)
+- name: "WINE :: Update package lists for Wine installation"
+  become: yes
+  apt:
+    update_cache: True
+
+# Install Easy packages
+- name: "WINE :: Install packages"
+  become: yes
+  apt: pkg={{ item }} state=installed
+  with_items:
+  - winehq-devel
+  - winetricks
+  - fonts-crosextra-carlito

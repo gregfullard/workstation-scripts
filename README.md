@@ -36,9 +36,9 @@ Ansible playbooks.
 * [InSync](https://www.insynchq.com/)
 * [zoom](https://zoom.us/)
 * [gimp](https://www.gimp.org/)
-* TBD - [wine](https://www.winehq.org/)
-* TBD - WineTricks
-* TBD - Thunderbird
+* [wine](https://www.winehq.org/)
+* [winetricks](https://wiki.winehq.org/Winetricks)
+* [thunderbird](https://www.mozilla.org/en-US/thunderbird/)
 * TBD - [Dropbox](https://www.dropbox.com/)
 * TBD - Printer Driver
 * TBD - Scanner Driver
