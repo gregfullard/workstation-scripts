@@ -86,7 +86,9 @@
   # Enable i386 architecture
   # See: https://wiki.winehq.org/Ubuntu
   # https://stackoverflow.com/questions/29842246/how-to-install-x86-architecture-for-java-using-ansible/33377943#33377943
+  # TODO: Need to add something for 17.10
 - name: "WINE | Enable i386 architecture"
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '16.04'
   become: yes
   lineinfile:
     dest: '/var/lib/dpkg/arch'
@@ -96,12 +98,14 @@
 
   # Update Packages
 - name: "WINE | Update package lists for Wine installation"
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '16.04'
   become: yes
   apt:
     update_cache: True
 
 # Install Easy packages
 - name: "WINE | Install packages"
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '16.04'
   become: yes
   apt: pkg={{ item }} state=installed
   with_items:
