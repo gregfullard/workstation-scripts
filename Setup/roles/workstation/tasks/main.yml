@@ -32,7 +32,7 @@
 - name: "FOLDER | Repos/DigitalPlatoon"
   file: path=/home/{{ user_name }}/Repos/DigitalPlatoon state=directory owner={{ user_name }} group={{ user_name }}
 - name: "FOLDER | Repos/Learning"
-  file: path=/home/{{ user_name }}/Repos/Learning state=directory owner={{ user_name }} group={{ user_name }}  
+  file: path=/home/{{ user_name }}/Repos/Learning state=directory owner={{ user_name }} group={{ user_name }}
 
 # Google Chrome
 # via http://linuxg.net/how-to-install-google-chrome-42-stable-on-the-most-popular-linux-systems-via-the-official-google-repository/
@@ -93,6 +93,7 @@
   # See: https://wiki.winehq.org/Ubuntu
   # https://stackoverflow.com/questions/29842246/how-to-install-x86-architecture-for-java-using-ansible/33377943#33377943
 - name: "WINE | Enable i386 architecture"
+  when: ansible_distribution == "Ubuntu" and ansible_distribution_version == "16.04"
   become: yes
   lineinfile:
     dest: '/var/lib/dpkg/arch'
@@ -101,18 +102,21 @@
     state: 'present'
 
 - name: "WINE | Add apt key to trust apt repo"
+  when: ansible_distribution == "Ubuntu" and ansible_distribution_version == "16.04"
   become: yes
   apt_key:
     url: "https://dl.winehq.org/wine-builds/Release.key"
     state: present
 
 - name: "WINE | Add apt repo"
+  when: ansible_distribution == "Ubuntu" and ansible_distribution_version == "16.04"
   become: yes
   apt_repository:
     repo: "deb https://dl.winehq.org/wine-builds/{{ ansible_distribution | lower }}/ {{ ansible_distribution_release }} main"
     state: present
 
 - name: "WINE | Installing WineHQ Stable"
+  when: ansible_distribution == "Ubuntu" and ansible_distribution_version == "16.04"
   become: yes
   apt: pkg={{ item }} state=installed install_recommends=yes
   with_items:

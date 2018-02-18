@@ -2,6 +2,7 @@
 Scripts used on my workstation for initial setup, backup, etc.
 Strongly influenced by: https://github.com/pbassiner/dev-env
 Note: This set of scripts and playbooks are developed for Ubuntu ONLY
+Also Note: I'm still having issues running the installation of Wine on 17.10, so I'm only installing Wine on 16.04
 
 # Run it
 ```shell
