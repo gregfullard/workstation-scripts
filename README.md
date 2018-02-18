@@ -79,11 +79,13 @@ Ansible playbooks.
 
 ## Test Developer Tools
 * [soapui](https://www.soapui.org/)
-* [JMeter](http://jmeter.apache.org/)
+* TBD - [JMeter](http://jmeter.apache.org/)
 * TBD - Chrome Pluging - ARC
 
-## Other utilities
+## Python Developer tools
 * TBD - Anaconda
+* TBD - Pandas
+* TBD - Jupyter Notebook
 
 ## Servers & Containers
 * TBD - AEM
@@ -121,8 +123,8 @@ The following folders are created
 * TBD - Repos shortcut (Manual)
 * TBD - Launcher size (Manual)
 * TBD - Printer config (Manual)
-* TBD - VMs ready to open
-* TBD - Folder views
+* TBD - VMs ready to open (Manual)
+* TBD - Folder views (Manual)
 
 # Understanding the project
 You will find the following sub-folders in this repo:
@@ -225,6 +227,7 @@ To review whether the configuration was successful, you can do the following at 
  * Enable Workspaces (Setting > Appearance > Behaviour)
  * Lock apps to launcher (Terminal, Chrome, Virtualbox, Atom, Shutter)
  * Unlock Apps from launcher (LibreOffice, Amazon, System Settings)
+ * TBD - Folder views (Set to list view as default)
 
 # Reviewing Manual Steps
  * Start up BasicTools VM. Check files on VMShare can be accessed
