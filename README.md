@@ -79,6 +79,7 @@ Ansible playbooks.
 
 ## Test Developer Tools
 * [soapui](https://www.soapui.org/)
+* [JMeter](http://jmeter.apache.org/)
 * TBD - Chrome Pluging - ARC
 
 ## Other utilities
@@ -127,11 +128,11 @@ The following folders are created
 You will find the following sub-folders in this repo:
  * Root folder contains the bootstrap script. It will get everthing already
  * Backup
-  * Contains scripts that I use for backup and retrievals
+     * Contains scripts that I use for backup and retrievals
  * Setup
-  * Contains ansible hosts files. One file for each of my "setup domains"
-  * Contains a set of Ansible tasks grouped into roles. These are referenced from the playbooks
-  * For each setup domain, there is a playbook file which calls the roles that it needs
+     * Contains ansible hosts files. One file for each of my "setup domains"
+     * Contains a set of Ansible tasks grouped into roles. These are referenced from the playbooks
+     * For each setup domain, there is a playbook file which calls the roles that it needs
 
 # Reviewing when complete
 To review whether the configuration was successful, you can do the following at completion
