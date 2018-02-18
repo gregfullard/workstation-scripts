@@ -137,16 +137,16 @@ You will find the following sub-folders in this repo:
 # Reviewing when complete
 To review whether the configuration was successful, you can do the following at completion
  * Check registered repos - Step 1
-  * cat /etc/apt/sources.list
-  * You should see the following in the list:
-  * TBD
+     * cat /etc/apt/sources.list
+     * You should see the following in the list:
+     * TBD
  * Check registered repos - Step 2
-  * ls /etc/apt/sources.list.d
-  * You should see the following files:
-  * ansible*
-  * git*
-  * google-chrome*
-  * insync*
+     * ls /etc/apt/sources.list.d
+     * You should see the following files:
+     * ansible*
+     * git*
+     * google-chrome*
+     * insync*
  * Super-key + "atom" to confirm Eclipse is installed
  * Super-key + "eclipse" to confirm Eclipse is installed
  * Super-key + "retext" to confirm Retext is installed
@@ -171,17 +171,17 @@ To review whether the configuration was successful, you can do the following at 
  * Restore non-VM files (sudo ./SimpleRestoreFromDrobo_AllExceptVMs.sh)
  * Restore VM files (sudo ./SimpleRestoreFromDrobo_VMs.sh)
  * Clone BitBucket repos for active development
-  * DigitalPlatoon/8BpUtils
-  * DigitalPlatoon/C3M_Avocado
-  * DigitalPlatoon/DigitalPlatoonDevOpsToolbox
-  * DigitalPlatoon/8BitPlatoon_MvnArchetypes
-  * DigitalPlatoon/8BitPlatoon_RandomFiles  
+     * DigitalPlatoon/8BpUtils
+     * DigitalPlatoon/C3M_Avocado
+     * DigitalPlatoon/DigitalPlatoonDevOpsToolbox
+     * DigitalPlatoon/8BitPlatoon_MvnArchetypes
+     * DigitalPlatoon/8BitPlatoon_RandomFiles  
  * Configure VMs
-  * Open virtualbox
-  * Add BasicTools VM (Machine > Add. > ~/Greg_OfflineData/ActiveVMs/Win7Pro_BasicTools/Win7Pro_BasicTools.vbox)
-  * Add AnsibleHomeBase VM (Machine > Add. > ~/Greg_OfflineData/ActiveVMs/AnsibleHomeBase/AnsibleHomeBase.vbox)
-  * Add LCES4 VM (Machine > Add. > ~/Greg_OfflineData/ActiveVMs/Win7Ult_LCES4/Win7Ult_LCES4.vbox)
-  * Add AEM JEE VM (Machine > Add. > ~/Greg_OfflineData/ActiveVMs/Win7Pro_AEMJEE2/Win7Pro_AEMJEE2.vbox)   
+     * Open virtualbox
+     * Add BasicTools VM (Machine > Add. > ~/Greg_OfflineData/ActiveVMs/Win7Pro_BasicTools/Win7Pro_BasicTools.vbox)
+     * Add AnsibleHomeBase VM (Machine > Add. > ~/Greg_OfflineData/ActiveVMs/AnsibleHomeBase/AnsibleHomeBase.vbox)
+     * Add LCES4 VM (Machine > Add. > ~/Greg_OfflineData/ActiveVMs/Win7Ult_LCES4/Win7Ult_LCES4.vbox)
+     * Add AEM JEE VM (Machine > Add. > ~/Greg_OfflineData/ActiveVMs/Win7Pro_AEMJEE2/Win7Pro_AEMJEE2.vbox)   
  * TBD - Configure Thunderbird profile to point to restored files (NOTE: Only do this for a real run)
  * TBD - Download and Install JBDS
  * TBD - Download and Install Adobe Reader
@@ -189,37 +189,37 @@ To review whether the configuration was successful, you can do the following at 
 
 # Manual steps at the end :: Ubuntu 16.04 (Make these less over time)
  * Install Printer
-  * Plug int printer on USB
-  * Download ULD driver at http://www.samsungdrivers.net/samsung-m2070fw-driver/
-  * (Also stored at Greg_ServerData/Software/Drivers/Samsung M2070FW Printer Driver)
-  * Untar the tar.gz file
-  * sudo ./install
-  * After successful installation, super-key > Printers
-  * Add printer, select Samsung and follow prompts. Print test page
-  * Open gscan2pdf. Do a test scan
+     * Plug int printer on USB
+     * Download ULD driver at http://www.samsungdrivers.net/samsung-m2070fw-driver/
+     * (Also stored at Greg_ServerData/Software/Drivers/Samsung M2070FW Printer Driver)
+     * Untar the tar.gz file
+     * sudo ./install
+     * After successful installation, super-key > Printers
+     * Add printer, select Samsung and follow prompts. Print test page
+     * Open gscan2pdf. Do a test scan
  * Remove unwanted Nautilus Places
-  * https://askubuntu.com/questions/762591/how-to-remove-unwanted-default-bookmarks-in-nautilus
-  * sudo nano ~/.config/user-dirs.dirs
-  * sudo nano /etc/xdg/user-dirs.defaults
-  * Comment out the unwanted lines
+     * https://askubuntu.com/questions/762591/how-to-remove-unwanted-default-bookmarks-in-nautilus
+     * sudo nano ~/.config/user-dirs.dirs
+     * sudo nano /etc/xdg/user-dirs.defaults
+     * Comment out the unwanted lines
  * Remove unwanted Nautilus links in Home holder
-  * Open Nautilus home folder
-  * Trash Documents
-  * Trash Music
-  * Trash Pictures
-  * Trash Videos
-  * Trash Templates
-  * Trash Examples
+     * Open Nautilus home folder
+     * Trash Documents
+     * Trash Music
+     * Trash Pictures
+     * Trash Videos
+     * Trash Templates
+     * Trash Examples
  * Edit Nautilus Bookmarks
-  * Open Nautilus window
-  * Bookmarks > Bookmarks
-  * Delete all but one of the bookmarks you don't want (Can't delete the last one)
-  * Rename the last one to Repos and point it to /home/gregf/Repos
-  * Browse to ~/Greg_OfflineData, add bookmark (Bookmarks > Bookmark this location)
-  * Browse to ~/Greg_OfflineData/VMShare, add bookmark (Bookmarks > Bookmark this location)
-  * Browse to ~/GoogleDrive, add bookmark (Bookmarks > Bookmark this location)
-  * Connect to Server (192.168.3.253). Open public folder, add bookmark.
-  * TBD - Add Dropbox shortcut
+     * Open Nautilus window
+     * Bookmarks > Bookmarks
+     * Delete all but one of the bookmarks you don't want (Can't delete the last one)
+     * Rename the last one to Repos and point it to /home/gregf/Repos
+     * Browse to ~/Greg_OfflineData, add bookmark (Bookmarks > Bookmark this location)
+     * Browse to ~/Greg_OfflineData/VMShare, add bookmark (Bookmarks > Bookmark this location)
+     * Browse to ~/GoogleDrive, add bookmark (Bookmarks > Bookmark this location)
+     * Connect to Server (192.168.3.253). Open public folder, add bookmark.
+     * TBD - Add Dropbox shortcut
  * Resize Launcher (Setting > Appearance > Look)
  * Add View Desktop button to launcher (Setting > Appearance > Behaviour)
  * Enable Workspaces (Setting > Appearance > Behaviour)
