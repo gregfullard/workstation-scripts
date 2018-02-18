@@ -29,6 +29,10 @@
   file: path=/home/{{ user_name }}/Greg_OfflineData state=directory owner={{ user_name }} group={{ user_name }}
 - name: "FOLDER | Repos"
   file: path=/home/{{ user_name }}/Repos state=directory owner={{ user_name }} group={{ user_name }}
+- name: "FOLDER | Repos/DigitalPlatoon"
+  file: path=/home/{{ user_name }}/Repos/DigitalPlatoon state=directory owner={{ user_name }} group={{ user_name }}
+- name: "FOLDER | Repos/Learning"
+  file: path=/home/{{ user_name }}/Repos/Learning state=directory owner={{ user_name }} group={{ user_name }}  
 
 # Google Chrome
 # via http://linuxg.net/how-to-install-google-chrome-42-stable-on-the-most-popular-linux-systems-via-the-official-google-repository/
