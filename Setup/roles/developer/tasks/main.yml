@@ -15,6 +15,7 @@
   - python-pip
   - python-dev
   - build-essential
+  - vagrant
 
 # Add Atom repo
 - name: "ATOM | Registering Atom Repo"

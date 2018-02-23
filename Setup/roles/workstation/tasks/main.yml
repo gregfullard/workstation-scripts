@@ -17,6 +17,7 @@
   - thunderbird
   - cifs-utils
   - smbclient
+  - keepassx
 
 # Create Folders
 - name: "FOLDER | Software"
