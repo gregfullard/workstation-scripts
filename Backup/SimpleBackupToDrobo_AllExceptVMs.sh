@@ -9,4 +9,5 @@ rsync -r -v --progress -s /home/gregf/Greg_OfflineData/Temp_Music /mnt/GregData/
 rsync -r -v --progress -s /home/gregf/Greg_OfflineData/VMShare /mnt/GregData/Greg_OfflineData
 rsync -r -v --progress -s /home/gregf/Email /mnt/GregData/Greg_OfflineData/
 rsync -r -v --progress -s /home/gregf/Desktop /mnt/GregData/Greg_OfflineData/
-rsync -r -v --progress -s /home/gregf/.ssh /mnt/GregData/Greg_OfflineData/SSH
+rsync -r -v --progress -s /home/gregf/.ssh /mnt/GregData/Greg_OfflineData/
+rsync -r -v --progress -s /home/gregf/.pem /mnt/GregData/Greg_OfflineData/
