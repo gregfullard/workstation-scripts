@@ -45,6 +45,7 @@ Ansible playbooks.
 * [thunderbird](https://www.mozilla.org/en-US/thunderbird/)
 * [cifs-utils](https://wiki.samba.org/index.php/LinuxCIFS_utils)
 * [smbclient](https://www.samba.org/samba/docs/current/man-html/smbclient.1.html)
+* [keepassx](https://www.keepassx.org/)
 * TBD - [slack](https://slack.com)
 * TBD - [Dropbox](https://www.dropbox.com/)
 * TBD - Password manager
@@ -58,6 +59,7 @@ Ansible playbooks.
 * [sphinx](http://www.sphinx-doc.org)
 * [texlive-full](https://www.tug.org/texlive/)
 * [texmaker](http://www.xm1math.net/texmaker/)
+* [vagrant](https://www.vagrantup.com/)
 * TBD - [docker](https://www.docker.com/)
 * TBD - [docker-compose](https://docs.docker.com/comp* TBD - Vokoscreenose/) ![Installed](https://img.shields.io/badge/current\-v1.18.0-blue.svg) [![GitHub release](https://img.shields.io/github/release/docker/compose.svg?label=latest)](https://github.com/docker/compose/releases/latest)
 
