@@ -37,7 +37,7 @@ then
     echo 'Existing '$homefolder'/WorkstationScripts folder backed up to'./zzzWorkstationScripts_$now
     sudo rm ./WorkstationScripts -R
 fi
-git clone https://github.com/gregfullard/workstation-scripts.git WorkstationScripts
+git clone git@github.com:gregfullard/workstation-scripts.git WorkstationScripts
 
 # Install Ansible
 # Note: ansible installs its default hosts file and config file at /etc/ansible_hosts
