@@ -31,9 +31,14 @@ Media_Podcasts = 1
 Media_Series = 1
 Media_TalkShows = 1
 Greg_OfflineData_Active_VMs = 1
-Greg_OfflineData_Temp = 1
-Greg_OfflineData_Email = 1
+Greg_OfflineData_Desktop = 1
 Greg_OfflineData_Dev = 1
+Greg_OfflineData_Docker = 1
+Greg_OfflineData_Email = 1
+Greg_OfflineData_Temp = 1
+Greg_OfflineData_VMShare = 1
+Greg_OfflineData_PEM = 1
+Greg_OfflineData_SSH = 1
 GregServerData_Books = 1
 GregServerData_Reference = 1
 GregServerData_Software = 1
@@ -42,7 +47,6 @@ GregServerData_ArchivedWork = 1
 GregServerData_VMs = 1
 GeneralShare = 1
 RosalieData = 1
-
 
 timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S") 
 
@@ -82,31 +86,36 @@ def backupSubFolder(num ,subName, runFlag, source, dest):
 #
 #Storage1
 backupSubFolder("1", "Greg_OfflineData_Active_VMs", Greg_OfflineData_Active_VMs, "/media/Drobo/GregData/Greg_OfflineData/Active_VMs", "/media/Storage1/GeneralBackup/GregData/Greg_OfflineData")
-backupSubFolder("2", "Greg_OfflineData_Temp", Greg_OfflineData_Temp, "/media/Drobo/GregData/Greg_OfflineData/Temp", "/media/Storage1/GeneralBackup/GregData/Greg_OfflineData")
-backupSubFolder("3", "Greg_OfflineData_Email", Greg_OfflineData_Email, "/media/Drobo/GregData/Greg_OfflineData/Email", "/media/Storage1/GeneralBackup/GregData/Greg_OfflineData")
-backupSubFolder("4", "Greg_OfflineData_Dev", Greg_OfflineData_Dev, "/media/Drobo/GregData/Greg_OfflineData/Dev", "/media/Storage1/GeneralBackup/GregData/Greg_OfflineData")
-backupSubFolder("5", "GregServerData_Books", GregServerData_Books, "/media/Drobo/GregData/Greg_ServerData/Books", "/media/Storage1/GeneralBackup/GregData/Greg_ServerData")
-backupSubFolder("6", "GregServerData_Reference", GregServerData_Reference, "/media/Drobo/GregData/Greg_ServerData/Reference", "/media/Storage1/GeneralBackup/GregData/Greg_ServerData")
-backupSubFolder("7", "GregServerData_Software", GregServerData_Software, "/media/Drobo/GregData/Greg_ServerData/Software", "/media/Storage1/GeneralBackup/GregData/Greg_ServerData")
-backupSubFolder("8", "GregServerData_OnlineCourses", GregServerData_OnlineCourses, "/media/Drobo/GregData/Greg_ServerData/OnlineCourses", "/media/Storage1/GeneralBackup/GregData/Greg_ServerData")
-backupSubFolder("9", "GregServerData_ArchivedWork", GregServerData_ArchivedWork, "/media/Drobo/GregData/Greg_ServerData/ArchivedWork", "/media/Storage1/GeneralBackup/GregData/Greg_ServerData")
-backupSubFolder("10", "GregServerData_VMs", GregServerData_VMs, "/media/Drobo/GregData/Greg_ServerData/VMs", "/media/Storage1/GeneralBackup/GregData/Greg_ServerData")
-backupSubFolder("11", "GeneralShare", GeneralShare, "/media/Drobo/GeneralShare", "/media/Storage1/GeneralBackup")
-backupSubFolder("12", "Media_Photos", Media_Photos, "/media/Drobo/Media/Photos", "/media/Storage1/GeneralBackup/Media")
+backupSubFolder("2", "Greg_OfflineData_Desktop", Greg_OfflineData_Desktop, "/media/Drobo/GregData/Greg_OfflineData/Desktop", "/media/Storage1/GeneralBackup/GregData/Greg_OfflineData")
+backupSubFolder("3", "Greg_OfflineData_Dev", Greg_OfflineData_Dev, "/media/Drobo/GregData/Greg_OfflineData/Dev", "/media/Storage1/GeneralBackup/GregData/Greg_OfflineData")
+backupSubFolder("4", "Greg_OfflineData_Docker", Greg_OfflineData_Docker, "/media/Drobo/GregData/Greg_OfflineData/Docker", "/media/Storage1/GeneralBackup/GregData/Greg_OfflineData")
+backupSubFolder("5", "Greg_OfflineData_Email", Greg_OfflineData_Email, "/media/Drobo/GregData/Greg_OfflineData/Email", "/media/Storage1/GeneralBackup/GregData/Greg_OfflineData")
+backupSubFolder("6", "Greg_OfflineData_Temp", Greg_OfflineData_Temp, "/media/Drobo/GregData/Greg_OfflineData/Temp", "/media/Storage1/GeneralBackup/GregData/Greg_OfflineData")
+backupSubFolder("7", "Greg_OfflineData_VMShare", Greg_OfflineData_VMShare, "/media/Drobo/GregData/Greg_OfflineData/VMShare", "/media/Storage1/GeneralBackup/GregData/Greg_OfflineData")
+backupSubFolder("8", "Greg_OfflineData_PEM", Greg_OfflineData_PEM, "/media/Drobo/GregData/Greg_OfflineData/.pem", "/media/Storage1/GeneralBackup/GregData/Greg_OfflineData")
+backupSubFolder("9", "Greg_OfflineData_SSH", Greg_OfflineData_SSH, "/media/Drobo/GregData/Greg_OfflineData/.ssh", "/media/Storage1/GeneralBackup/GregData/Greg_OfflineData")
+backupSubFolder("10", "GregServerData_Books", GregServerData_Books, "/media/Drobo/GregData/Greg_ServerData/Books", "/media/Storage1/GeneralBackup/GregData/Greg_ServerData")
+backupSubFolder("11", "GregServerData_Reference", GregServerData_Reference, "/media/Drobo/GregData/Greg_ServerData/Reference", "/media/Storage1/GeneralBackup/GregData/Greg_ServerData")
+backupSubFolder("12", "GregServerData_Software", GregServerData_Software, "/media/Drobo/GregData/Greg_ServerData/Software", "/media/Storage1/GeneralBackup/GregData/Greg_ServerData")
+backupSubFolder("13", "GregServerData_OnlineCourses", GregServerData_OnlineCourses, "/media/Drobo/GregData/Greg_ServerData/OnlineCourses", "/media/Storage1/GeneralBackup/GregData/Greg_ServerData")
+backupSubFolder("14", "GregServerData_ArchivedWork", GregServerData_ArchivedWork, "/media/Drobo/GregData/Greg_ServerData/ArchivedWork", "/media/Storage1/GeneralBackup/GregData/Greg_ServerData")
+backupSubFolder("15", "GregServerData_VMs", GregServerData_VMs, "/media/Drobo/GregData/Greg_ServerData/VMs", "/media/Storage1/GeneralBackup/GregData/Greg_ServerData")
+backupSubFolder("16", "GeneralShare", GeneralShare, "/media/Drobo/GeneralShare", "/media/Storage1/GeneralBackup")
+backupSubFolder("17", "Media_Photos", Media_Photos, "/media/Drobo/Media/Photos", "/media/Storage1/GeneralBackup/Media")
 
 #Storage 2
-backupSubFolder("13", "Media_TalkShows", Media_TalkShows, "/media/Drobo/Media/TalkShows", "/media/Storage2/GeneralBackup/Media")
-backupSubFolder("14", "Media_Comedy", Media_Comedy, "/media/Drobo/Media/Comedy", "/media/Storage2/GeneralBackup/Media")
-backupSubFolder("15", "Media_Documentaries", Media_Documentaries, "/media/Drobo/Media/Documentaries", "/media/Storage2/GeneralBackup/Media")
-backupSubFolder("16", "Media_Podcasts", Media_Podcasts, "/media/Drobo/Media/Podcasts", "/media/Storage2/GeneralBackup/Media")
-backupSubFolder("17", "Media_Series", Media_Series, "/media/Drobo/Media/Series", "/media/Storage2/GeneralBackup/Media")
-backupSubFolder("18", "Media_HomeVideos", Media_HomeVideos, "/media/Drobo/Media/HomeVideos", "/media/Storage2/GeneralBackup/Media")
-backupSubFolder("19", "Media_AudioBooks", Media_AudioBooks, "/media/Drobo/Media/AudioBooks", "/media/Storage2/GeneralBackup/Media")
-backupSubFolder("20", "Media_Music", Media_Music, "/media/Drobo/Media/Music", "/media/Storage2/GeneralBackup/Media")
+backupSubFolder("18", "Media_TalkShows", Media_TalkShows, "/media/Drobo/Media/TalkShows", "/media/Storage2/GeneralBackup/Media")
+backupSubFolder("19", "Media_Comedy", Media_Comedy, "/media/Drobo/Media/Comedy", "/media/Storage2/GeneralBackup/Media")
+backupSubFolder("20", "Media_Documentaries", Media_Documentaries, "/media/Drobo/Media/Documentaries", "/media/Storage2/GeneralBackup/Media")
+backupSubFolder("21", "Media_Podcasts", Media_Podcasts, "/media/Drobo/Media/Podcasts", "/media/Storage2/GeneralBackup/Media")
+backupSubFolder("22", "Media_Series", Media_Series, "/media/Drobo/Media/Series", "/media/Storage2/GeneralBackup/Media")
+backupSubFolder("23", "Media_HomeVideos", Media_HomeVideos, "/media/Drobo/Media/HomeVideos", "/media/Storage2/GeneralBackup/Media")
+backupSubFolder("24", "Media_AudioBooks", Media_AudioBooks, "/media/Drobo/Media/AudioBooks", "/media/Storage2/GeneralBackup/Media")
+backupSubFolder("25", "Media_Music", Media_Music, "/media/Drobo/Media/Music", "/media/Storage2/GeneralBackup/Media")
 
 #Storage 3
-backupSubFolder("21", "Media_Movies", Media_Movies, "/media/Drobo/Media/Movies", "/media/Storage3/GeneralBackup/Media")
-backupSubFolder("22", "RosalieData", RosalieData, "/media/Drobo/RosalieData", "/media/Storage3/GeneralBackup")
+backupSubFolder("26", "Media_Movies", Media_Movies, "/media/Drobo/Media/Movies", "/media/Storage3/GeneralBackup/Media")
+backupSubFolder("27", "RosalieData", RosalieData, "/media/Drobo/RosalieData", "/media/Storage3/GeneralBackup")
 
 
 
