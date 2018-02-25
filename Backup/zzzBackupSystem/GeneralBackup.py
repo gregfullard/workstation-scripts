@@ -13,7 +13,7 @@
 # - Configuring Drobo SMB mount point
 #	- https://help.ubuntu.com/community/Samba/SambaClientGuide
 #	- Configured at /media/Drobo (NO AUTO MOUNT)
-#	- sudo mount /media/Drobo, or sudo umount /media/Drobo
+#	- r, or sudo umount /media/Drobo
 
 import subprocess, datetime, os
 
