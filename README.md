@@ -46,6 +46,7 @@ Ansible playbooks.
 * [cifs-utils](https://wiki.samba.org/index.php/LinuxCIFS_utils)
 * [smbclient](https://www.samba.org/samba/docs/current/man-html/smbclient.1.html)
 * [keepassx](https://www.keepassx.org/)
+* [gksu](http://www.nongnu.org/gksu/)
 * TBD - [slack](https://slack.com)
 * TBD - [Dropbox](https://www.dropbox.com/)
 * TBD - Password manager
