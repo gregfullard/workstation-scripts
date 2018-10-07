@@ -4,6 +4,12 @@ Strongly influenced by: https://github.com/pbassiner/dev-env
 Note: This set of scripts and playbooks are developed for Ubuntu ONLY
 Also Note: I'm still having issues running the installation of Wine on 17.10, so I'm only installing Wine on 16.04
 
+# Prerequisite
+This script will connect to your github account using SSH. So you will first need to manually copy your ssh keys
+into the .ssh folder. Additionally, make sure that the key files are given apprpriate permissions with 
+* chmod 600 id_rsa
+* chmod 600 id_rsa.pub
+
 # Run it
 ```shell
 wget -qO- https://raw.github.com/gregfullard/workstation-scripts/master/bootstrap.sh | bash
@@ -153,7 +159,7 @@ To review whether the configuration was successful, you can do the following at 
      * git*
      * google-chrome*
      * insync*
- * Super-key + "atom" to confirm Eclipse is installed
+ * Super-key + "atom" to confirm Atom is installed
  * Super-key + "eclipse" to confirm Eclipse is installed
  * Super-key + "retext" to confirm Retext is installed
  * Super-key + "glogg" to confirm Glogg is installed
@@ -192,6 +198,10 @@ To review whether the configuration was successful, you can do the following at 
  * TBD - Download and Install JBDS
  * TBD - Download and Install Adobe Reader
  * TBD - Download and Install Balsamiq Mockups
+ * TBD - Download and Install Apache Directory Studio
+ * TBD - Download and Install AEM
+ * TBD - Download abd Install Sling
+ * TBD - OneDrive client
 
 # Manual steps at the end :: Ubuntu 16.04 (Make these less over time)
  * Install Printer
