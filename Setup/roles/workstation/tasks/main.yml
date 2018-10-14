@@ -18,7 +18,7 @@
   - cifs-utils
   - smbclient
   - keepassx
-  - gksu
+#  - gksu
 
 # Create Folders
 - name: "FOLDER | Software"
