@@ -52,7 +52,7 @@ Ansible playbooks.
 * [cifs-utils](https://wiki.samba.org/index.php/LinuxCIFS_utils)
 * [smbclient](https://www.samba.org/samba/docs/current/man-html/smbclient.1.html)
 * [keepassx](https://www.keepassx.org/)
-* [gksu](http://www.nongnu.org/gksu/)
+* [gksu](http://www.nongnu.org/gksu/) (REMOVED FROM DEBIAN)
 * TBD - [slack](https://slack.com)
 * TBD - [Dropbox](https://www.dropbox.com/)
 * TBD - Password manager
@@ -91,6 +91,7 @@ Ansible playbooks.
 * [soapui](https://www.soapui.org/)
 * TBD - [JMeter](http://jmeter.apache.org/)
 * TBD - Chrome Pluging - ARC
+* TBD - Postman
 
 ## Python Developer tools
 * TBD - Anaconda
@@ -183,29 +184,87 @@ To review whether the configuration was successful, you can do the following at 
  * Restore non-VM files (sudo ./SimpleRestoreFromDrobo_AllExceptVMs.sh)
  * Restore VM files (sudo ./SimpleRestoreFromDrobo_VMs.sh)
  * Clone BitBucket repos for active development
-     * DigitalPlatoon/8BpUtils
-     * DigitalPlatoon/C3M_Avocado
-     * DigitalPlatoon/DigitalPlatoonDevOpsToolbox
-     * DigitalPlatoon/8BitPlatoon_MvnArchetypes
-     * DigitalPlatoon/8BitPlatoon_RandomFiles  
+     * Digital/8BpUtils
+     * Digital/C3M_Avocado
+     * Digital/DigitalPlatoonDevOpsToolbox
+     * Digital/8BitPlatoon_MvnArchetypes
+     * Digital/8BitPlatoon_RandomFiles
+     * And any other repos of projects you're currently working on
+ * Configure Git Global .gitignore
+ * Install Maven Archetypes
  * Configure VMs
      * Open virtualbox
      * Add BasicTools VM (Machine > Add. > ~/Greg_OfflineData/ActiveVMs/Win7Pro_BasicTools/Win7Pro_BasicTools.vbox)
      * Add AnsibleHomeBase VM (Machine > Add. > ~/Greg_OfflineData/ActiveVMs/AnsibleHomeBase/AnsibleHomeBase.vbox)
      * Add LCES4 VM (Machine > Add. > ~/Greg_OfflineData/ActiveVMs/Win7Ult_LCES4/Win7Ult_LCES4.vbox)
-     * Add AEM JEE VM (Machine > Add. > ~/Greg_OfflineData/ActiveVMs/Win7Pro_AEMJEE2/Win7Pro_AEMJEE2.vbox)   
- * TBD - Configure Thunderbird profile to point to restored files (NOTE: Only do this for a real run)
- * TBD - Download and Install JBDS
+     * Add AEM JEE VM (Machine > Add. > ~/Greg_OfflineData/ActiveVMs/Win7Pro_AEMJEE2/Win7Pro_AEMJEE2.vbox)
+ * Configure Thunderbird profile to point to restored files (NOTE: Only do this for a real run)
+     * Start thunderbird once, this will create a folder ~/.thunderbird
+     * Close it immediately
+     * Now edit the file ~/.thunderbird/profiles.ini
+     * Content should be:
+[General]
+StartWithLastProfile=1
+
+[Profile0]
+Name=default
+IsRelative=0
+Path=/home/gregf/Email/Thunderbird/Profiles/Thunderbird.default
+Default=1
+     * Now you can open Thunderbird again and all accounts will be ready for you to download
+ * Download and Install JBDS
+     * Download the latest JBoss Developer Studio install
+     * Run the installer
+     * Once installed, start up JBDS and select one of the clones Repos as your default Workspace
+ * Configure JBDS Update Sites
+     * Add the following update sites to JBDS (Help > Install new Software > Add...:
+     * Adobe Dev Tools, https://eclipse.adobe.com/aem/dev-tools/
+     * RestEditor, http://resteditor.sourceforge.net/eclipse/
  * TBD - Download and Install Adobe Reader
  * TBD - Download and Install Balsamiq Mockups
- * TBD - Download and Install Apache Directory Studio
- * TBD - Download and Install AEM
- * TBD - Download abd Install Sling
+     * https://support.balsamiq.com/installation/linux/
+ * Download and Install Apache Directory Studio
+     * Download from a suitable Apache Mirror (Be sure to grab the Studio download, not the ApacheDS one)
+     * Extract to ~/Software/ApacheDirectoryStudio
+ * Download and Install AEM
+     * Drop AEM Quickstart JAR and Licence file at ~/Software/<YourChosenName>/author
+     * Open terminal
+     * Run java -jar aem-author-6.3.0-p4502.jar -nointeractive -gui
+     * Once AEM starts up, log in with admin:admin
+     * Open Package Share
+     * Install all the available service packs
+     * Stop AEM
+     * Create an aemstart.sh shell script with the following content:
+#!/bin/bash 
+echo "Starting up AEM 6.3"
+crx-quickstart/bin/start
+     * Create an aemstop.sh shell script with the following content:
+#!/bin/bash 
+echo "Stopping AEM 6.3"
+crx-quickstart/bin/stop
+     * chmod 755 both files, to ensure they are executable
+     * Start up AEM using the start script
+     * Open Package Share
+     * Find the latest Forms package for Linux. Download and install it. (Search for "AEM-FORMS-6.3")
+     * The forms install will cause a BouncyCastle error
+     * Stop your AEM instance
+     * Open your file system (not CRX) and edit the sling.properties file under the quickstart/conf folder
+sling.bootdelegation.class.com.rsa.jsafe.provider.JsafeJCE=com.rsa.*
+sling.bootdelegation.class.org.bouncycastle.jce.provider.BouncyCastleProvider= org.bouncycastle.*
+     * Restart AEM
+ * Download and Install Sling
+     * Download the latest sling jar from https://sling.apache.org
+     * Drop the jar at ~/Software/Sling/<Your_Downloaded_Version>
+     * Start it up with java -jar <your_jar_name>
  * TBD - OneDrive client
+     * http://skilion.github.io/onedrive/
+     * https://medium.com/@glmdev/onedrive-sync-for-linux-ubuntu-2bcbf6777ee4
+     * https://www.modmy.com/how-sync-onedrive-linux
 
 # Manual steps at the end :: Ubuntu 16.04 (Make these less over time)
+ * Double-check PDF generation from Sphinx
  * Install Printer
-     * Plug int printer on USB
+     * Plug in printer on USB
      * Download ULD driver at http://www.samsungdrivers.net/samsung-m2070fw-driver/
      * (Also stored at Greg_ServerData/Software/Drivers/Samsung M2070FW Printer Driver)
      * Untar the tar.gz file
