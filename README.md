@@ -31,6 +31,8 @@ Ansible playbooks.
 * curl
 * software-properties-common
 * python
+* python3
+* python3-pip
 * tar
 * unzip
 
@@ -53,7 +55,7 @@ Ansible playbooks.
 * [cifs-utils](https://wiki.samba.org/index.php/LinuxCIFS_utils)
 * [smbclient](https://www.samba.org/samba/docs/current/man-html/smbclient.1.html)
 * [keepassx](https://www.keepassx.org/)
-* [gksu](http://www.nongnu.org/gksu/) (REMOVED FROM DEBIAN)
+* [onedrive](https://launchpad.net/ubuntu/bionic/+package/onedrive)
 * TBD - [slack](https://slack.com)
 * TBD - [Dropbox](https://www.dropbox.com/)
 * TBD - Password manager
@@ -68,8 +70,8 @@ Ansible playbooks.
 * [texlive-full](https://www.tug.org/texlive/)
 * [texmaker](http://www.xm1math.net/texmaker/)
 * [vagrant](https://www.vagrantup.com/)
-* TBD - [docker](https://www.docker.com/)
-* TBD - [docker-compose](https://docs.docker.com/comp* TBD - Vokoscreenose/) ![Installed](https://img.shields.io/badge/current\-v1.18.0-blue.svg) [![GitHub release](https://img.shields.io/github/release/docker/compose.svg?label=latest)](https://github.com/docker/compose/releases/latest)
+* [docker](https://www.docker.com/)
+* [docker-compose](https://docs.docker.com/compose)
 
 ## Java Dev Tools
 * [maven](https://maven.apache.org/)--recv-keys
@@ -174,10 +176,12 @@ To review whether the configuration was successful, you can do the following at 
  * Super-key + "InSync" to confirm installation
  * Super-key + "zoom" to confirm installation
  * Super-key + "gimp" to confirm installation
- * java -version to confirm Java 1.8 is Installed
- * git --version
- * mvn --version
- * TBD - Docker
+ * java -version to confirm Java 1.8 Runtime is Installed
+ * java -version to confirm Java 1.8 SDK is Installed
+ * git --version to confirm Git is installed
+ * mvn --version to confirm Maven is installed
+ * docker --version to confirm Docker is installed
+ * docker-compose --version to confirm Docker Compose is installed
 
 # Manual steps at the end :: All OSes (Make these less over time)
  * Sign-in to chrome, this will pull through bookmarks etc.
@@ -196,14 +200,13 @@ To review whether the configuration was successful, you can do the following at 
  * Configure VMs
      * Open virtualbox
      * Add BasicTools VM (Machine > Add. > ~/Greg_OfflineData/ActiveVMs/Win7Pro_BasicTools/Win7Pro_BasicTools.vbox)
-     * Add AnsibleHomeBase VM (Machine > Add. > ~/Greg_OfflineData/ActiveVMs/AnsibleHomeBase/AnsibleHomeBase.vbox)
-     * Add LCES4 VM (Machine > Add. > ~/Greg_OfflineData/ActiveVMs/Win7Ult_LCES4/Win7Ult_LCES4.vbox)
-     * Add AEM JEE VM (Machine > Add. > ~/Greg_OfflineData/ActiveVMs/Win7Pro_AEMJEE2/Win7Pro_AEMJEE2.vbox)
  * Configure Thunderbird profile to point to restored files (NOTE: Only do this for a real run)
      * Start thunderbird once, this will create a folder ~/.thunderbird
      * Close it immediately
      * Now edit the file ~/.thunderbird/profiles.ini
      * Content should be:
+
+```shell     
 [General]
 StartWithLastProfile=1
 
@@ -212,6 +215,8 @@ Name=default
 IsRelative=0
 Path=/home/gregf/Email/Thunderbird/Profiles/Thunderbird.default
 Default=1
+```
+
      * Now you can open Thunderbird again and all accounts will be ready for you to download
  * Download and Install JBDS
      * Download the latest JBoss Developer Studio install
