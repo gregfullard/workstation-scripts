@@ -204,6 +204,7 @@ To review whether the configuration was successful, you can do the following at 
      * Start thunderbird once, this will create a folder ~/.thunderbird
      * Close it immediately
      * Now edit the file ~/.thunderbird/profiles.ini
+     * Afterwards you can open Thunderbird again and all accounts will be ready for you to download
      * Content should be:
 
 ```shell     
@@ -217,7 +218,6 @@ Path=/home/gregf/Email/Thunderbird/Profiles/Thunderbird.default
 Default=1
 ```
 
-     * Now you can open Thunderbird again and all accounts will be ready for you to download
  * Download and Install JBDS
      * Download the latest JBoss Developer Studio install
      * Run the installer
