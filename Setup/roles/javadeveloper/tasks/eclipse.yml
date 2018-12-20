@@ -72,7 +72,7 @@
 
   # Note: this simply creates the .desktop file, which can then be found via the launcher and pinned to the dock
 - name: "ECLIPSE | Configure eclipse desktop entry"
-  template: src=templates/eclipse.desktop.j2 dest={{ eclipse_desktop }}
+  template: src=../templates/eclipse.desktop.j2 dest={{ eclipse_desktop }}
   when: (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu')
   ignore_errors: yes
   #tags: eclipse_setup

@@ -1,3 +1,12 @@
+# SOAPUI
+# =======
+soapui_version: 5.2.1
+soapui_install_dir: "{{ home_folder }}/Software/SOAPUI2"
+soapui_desktop: "{{ home_folder }}/.local/share/applications/soapui.desktop"
+
+# POSTMAN
+# =======
+
 # Filename of Go language SDK redistributable package
 postman_redis_filename: 'Postman-linux-x64-latest.tar.gz'
 
