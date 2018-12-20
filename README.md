@@ -331,12 +331,13 @@ sling.bootdelegation.class.org.bouncycastle.jce.provider.BouncyCastleProvider= o
  * Resize Launcher (super key > dock)
  * Add View Desktop button to dock
     * gedit ~/.local/share/applications/show-desktop.desktop
-    
+
         [Desktop Entry]
         Type=Application
         Name=Show Desktop
         Icon=desktop
         Exec=xdotool key --clearmodifiers Super+d
+        
     * Super Key "Desktop" > Add to Favourites
  * Lock apps to dock (Terminal, Chrome, Virtualbox, Atom, Shutter)  
  * Unlock apps from dock (LibreOffice, Amazon, System Settings)  
