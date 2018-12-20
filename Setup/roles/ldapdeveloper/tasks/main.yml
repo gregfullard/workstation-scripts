@@ -1,0 +1,15 @@
+# Setting up Apache Directory Studio
+
+- name: "LDAP | Create Directory Studio home directory"
+  become: true
+  file:
+    dest="{{ studio_base_dir }}"
+    state=directory
+    owner="{{ user_name }}"
+    group="{{ user_name }}"
+
+# Download Directory Studio
+
+# Extract Directory Studio (Only if new download)
+
+# Create standalone DS Server

@@ -1,0 +1,5 @@
+# Variables required for AEM setups
+studio_base_dir: "{{ home_folder }}/Software/ApacheDSStudio"
+generic_ldap_server_dir: "{{ home_folder }}/Software/ApacheDirectoryServer1"
+studio_archive: "xxx.tar.gz"
+studio_url: "XXX/{{studio_archive}}"
