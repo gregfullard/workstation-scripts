@@ -42,72 +42,29 @@
     name: Sphinx
 
 # Install Docker
-- name: "Installing Docker"
+- name: "DOCKER | Installing Docker"
   become: yes
   apt:
     pkg:
       - docker.io
+      - docker-compose
     state: present
 
-# DOCKER
-# Install dockerhttps://download.docker.com/linux/ubuntu/gpg
-#- name: "DOCKER | Fail if not a supported release of Ubuntu"
-#  fail:
-#    msg: "{{ ansible_distribution_version }} is not an acceptable version of Ubuntu for this role"
-#  when: ansible_lsb.id|lower == "ubuntu" and ansible_distribution_version is version_compare('14.04', '<')
-#
-#- name: "DOCKER | Fail if not a new release of Debian"
-#  fail:
-#    msg: "{{ ansible_distribution_version }} is not an acceptable version of Debian for this role"
-#  when: ansible_lsb.id|lower == "debian" and ansible_distribution_version is version_compare('8.5', '<')
-#
-#- name: "DOCKER | Fail if using python3 with Ansible<2.3"
-#  fail:
-#    msg: "Ansible 2.3+ is required to use Python3 interpreter."
-#  when: ansible_version.full is version_compare('2.3', '<') and ansible_python_interpreter is defined and 'python3' in ansible_python_interpreter
-#
-# TODO: Simply automate this: https://linuxize.com/post/how-to-install-and-use-docker-on-ubuntu-18-04/
+- name: "DOCKER | Starting docker systemctl"
+  become: yes
+  shell: systemctl start docker
 
+- name: "DOCKER | Enabling docker systemctl"
+  become: yes
+  shell: systemctl enable docker
 
-#- name: Uninstall old vesions of Docker
-#  become: yes
-#  apt:
-#    name: "{{ item }}"
-#    state: absent
-#  with_items:    become: yes
-#    - docker
-#    - docker-engine
-#    - docker.io
+- name: "DOCKER | Add Greg user to docker group (This will require system restart)"
+  user:
+    name: "gregf"
+    append: yes
+    groups: docker
+  become: true
 
-# Note from docker.comp
-# Add Docker’s official    become: yes GPG key:
-# curl -fsSL hapt_repository ansible examplettps://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-# Verify that you now have the key with the fingerprint 9DC8 5822 9FC7 DD38 854A E2D8 8D81 803C 0EBF CD88, by searching for the last 8 characters of the fingerprint
-# sudo apt-key fingerprint 0EBFCD88
-# Use the following command to set up the stable repository
-# sudo add-apt-repository \
-#   "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-# Update the apt package index.
-# sudo apt-get update
-# sudo apt-get install docker-ce
-# Verify that Docker CE is installed correctly by running the hello-world image.
-# sudo docker run hello-world
-
-#- name: "Adding Docker GPG key"
-#  become: yes
-#  apt_key: url=https://download.docker.com/linux/ubuntu/gpg state=present
-
-#- name: "Registering Docker Repo"
-#  become: yes
-#  apt_repository:
-#    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-#    state: present
-
-#- name: "Installing Docker CE"
-#  become: yes
-#  apt: pkg={{ item }} state=installed
-#  with_items:
-#  - docker-ce
-
+# To test docker (Requires restart on very first install)
 #- name: "Testing docker"
 #  shell: docker run hello-world
