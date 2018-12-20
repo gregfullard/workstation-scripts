@@ -40,26 +40,32 @@
   become: yes
   pip:
     name: Sphinx
-  #pip: name={{ item }}
-  #with_items: Sphinx
+
+# Install Docker
+- name: "Installing Docker CE"
+  become: yes
+  apt:
+    pkg:
+      - docker-ce
+    state: present
 
 # DOCKER
 # Install dockerhttps://download.docker.com/linux/ubuntu/gpg
-- name: "DOCKER | Fail if not a supported release of Ubuntu"
-  fail:
-    msg: "{{ ansible_distribution_version }} is not an acceptable version of Ubuntu for this role"
-  when: ansible_lsb.id|lower == "ubuntu" and ansible_distribution_version is version_compare('14.04', '<')
-
-- name: "DOCKER | Fail if not a new release of Debian"
-  fail:
-    msg: "{{ ansible_distribution_version }} is not an acceptable version of Debian for this role"
-  when: ansible_lsb.id|lower == "debian" and ansible_distribution_version is version_compare('8.5', '<')
-
-- name: "DOCKER | Fail if using python3 with Ansible<2.3"
-  fail:
-    msg: "Ansible 2.3+ is required to use Python3 interpreter."
-  when: ansible_version.full is version_compare('2.3', '<') and ansible_python_interpreter is defined and 'python3' in ansible_python_interpreter
-
+#- name: "DOCKER | Fail if not a supported release of Ubuntu"
+#  fail:
+#    msg: "{{ ansible_distribution_version }} is not an acceptable version of Ubuntu for this role"
+#  when: ansible_lsb.id|lower == "ubuntu" and ansible_distribution_version is version_compare('14.04', '<')
+#
+#- name: "DOCKER | Fail if not a new release of Debian"
+#  fail:
+#    msg: "{{ ansible_distribution_version }} is not an acceptable version of Debian for this role"
+#  when: ansible_lsb.id|lower == "debian" and ansible_distribution_version is version_compare('8.5', '<')
+#
+#- name: "DOCKER | Fail if using python3 with Ansible<2.3"
+#  fail:
+#    msg: "Ansible 2.3+ is required to use Python3 interpreter."
+#  when: ansible_version.full is version_compare('2.3', '<') and ansible_python_interpreter is defined and 'python3' in ansible_python_interpreter
+#
 # TODO: Simply automate this: https://linuxize.com/post/how-to-install-and-use-docker-on-ubuntu-18-04/
 
 
