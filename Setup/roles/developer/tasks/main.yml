@@ -42,11 +42,11 @@
     name: Sphinx
 
 # Install Docker
-- name: "Installing Docker CE"
+- name: "Installing Docker"
   become: yes
   apt:
     pkg:
-      - docker-ce
+      - docker.io
     state: present
 
 # DOCKER
