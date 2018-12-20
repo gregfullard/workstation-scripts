@@ -74,29 +74,3 @@ ansible-playbook -K -i hosts-dev-workstation dev-workstation-playbook.yml
 echo '****************'
 echo '**************** Done'
 echo '****************'
-
-
-
-# Create some base folders in the home directory
-#if [ -d "~/Software" ]
-#then
-#    echo "Directory ~/Software exists already"
-#else
-#    echo "Creating directory ~/Software"
-#    mkdir ~/Software
-#fi
-
-# TBD - Now time to run the ansible playbook
-
-
-
-# Set up Ansible
-#cd ~/Software
-#git clone git://github.com/ansible/ansible.git --recursive Ansible
-#cd Ansible
-#source ./hacking/env-setup
-#sudo easy_install pip
-#sudo pip install -r ./requirements.txt
-#echo "127.0.0.1" > ~/WorkstationScripts/Ansible/ansible_hosts
-#export ANSIBLE_INVENTORY=~/WorkstationScripts/Ansible/ansible_hosts
-#ansible -m ping -c local 127.0.0.1
