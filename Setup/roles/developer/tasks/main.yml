@@ -60,7 +60,7 @@
 
 - name: "DOCKER | Add Greg user to docker group (This will require system restart)"
   user:
-    name: "gregf"
+    name: "{{ user_name }}"
     append: yes
     groups: docker
   become: true

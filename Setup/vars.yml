@@ -11,6 +11,8 @@ soapui_version: 5.2.1
 soapui_install_dir: "{{ home_folder }}/Software/SOAPUI2"
 soapui_desktop: "{{ home_folder }}/.local/share/applications/soapui.desktop"
 
+#POSTMAN
+
 # Eclipse
 eclipse_enabled: yes
 user: "{{ user_name }}"

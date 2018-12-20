@@ -3,6 +3,7 @@
 # Jmeter
 # SOAPUI
 # ARC for Chrome
+# Postman
 
 
 # SoapUI
@@ -63,7 +64,7 @@
   # Note: this simply creates the .desktop file, which can then be found via the launcher and pinned to the dock
 - name: "SOAPUI| Configure icon and desktop entry"
   when: (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu') and (soapui_download.changed)
-  template: src=templates/soapui.desktop.j2 dest={{ soapui_desktop }} mode=755
+  template: src=../templates/soapui.desktop.j2 dest={{ soapui_desktop }} mode=755
   with_items:
     - {
       name: "SoapUI",
@@ -73,3 +74,121 @@
       categories: "Development",
       path: "{{ soapui_install_dir }}/latest/bin"
     }
+
+# Postman
+
+- name: "POSTMAN | Create download directory"
+  file:
+    state: directory
+    mode: 'u=rwx,go=rx'
+    dest: '{{ postman_download_dir }}'
+
+- name: "POSTMAN | Check for download version file"
+  stat:
+    path: '{{ postman_download_version_path }}'
+  register: download_version_file_test
+
+- name: "POSTMAN | Read download version file"
+  slurp:
+    src: '{{ postman_download_version_path }}'
+  register: download_version_file
+  when: download_version_file_test.stat.exists
+
+- name: "POSTMAN | Set existing download version fact"
+  set_fact:
+    postman_existing_download_version: '{{ download_version_file.content | b64decode }}'
+  when: download_version_file_test.stat.exists
+
+- name: "POSTMAN | check latest remote Postman version"
+  uri:
+    url: '{{ postman_redis_url }}'
+    method: HEAD
+    follow_redirects: safe
+  check_mode: no
+  register: head_query
+
+- name: "POSTMAN | set latest version fact"
+  set_fact:
+    postman_latest_version: '{{ head_query.content_disposition }}'
+
+- name: "POSTMAN | Download Postman"
+  get_url:
+    url: '{{ postman_redis_url }}'
+    dest: '{{ postman_download_dir }}/{{ postman_redis_filename }}'
+    force: '{{ postman_latest_version != postman_existing_download_version }}'
+    use_proxy: yes
+    validate_certs: yes
+    mode: 'u=rw,go=r'
+
+- name: "POSTMAN | Update download version file"
+  copy:
+    content: '{{ postman_latest_version }}'
+    dest: '{{ postman_download_version_path }}'
+
+- name: "POSTMAN | Check for installed version file"
+  become: yes
+  stat:
+    path: '{{ postman_installed_version_path }}'
+  register: installed_version_file_test
+
+- name: "POSTMAN | Read installed version file"
+  become: yes
+  slurp:
+    src: '{{ postman_installed_version_path }}'
+  register: installed_version_file
+  when: installed_version_file_test.stat.exists
+
+- name: "POSTMAN | Set existing installed version fact"
+  set_fact:
+    postman_existing_installed_version: '{{ installed_version_file.content | b64decode }}'
+  when: installed_version_file_test.stat.exists
+
+- name: "POSTMAN | Remove previously insalled version"
+  become: yes
+  file:
+    state: absent
+    path: '{{ postman_install_dir }}'
+  when: (not installed_version_file_test.stat.exists) or postman_latest_version != postman_existing_installed_version
+
+- name: "POSTMAN | Create Postman installation directory"
+  become: yes
+  file:
+    state: directory
+    owner: root
+    group: root
+    mode: 'u=rwx,go=rx'
+    dest: '{{ postman_install_dir }}'
+
+- name: "POSTMAN | Install Postman"
+  become: yes
+  unarchive:
+    src: '{{ postman_download_dir }}/{{ postman_redis_filename }}'
+    remote_src: yes
+    dest: '{{ postman_install_dir }}'
+    extra_opts:
+      - '--strip-components=1'
+    owner: root
+    group: root
+    creates: '{{ postman_install_dir }}/Postman'
+
+- name: "POSTMAN | Write installed version file"
+  become: yes
+  copy:
+    content: '{{ postman_latest_version }}'
+    dest: '{{ postman_installed_version_path }}'
+
+- name: "POSTMAN | Install Postman link"
+  become: yes
+  file:
+    state: link
+    src: '{{ postman_install_dir }}/Postman'
+    dest: '/usr/local/bin/Postman'
+
+- name: "POSTMAN | Install Postman desktop file"
+  become: yes
+  template:
+    src: Postman.desktop.j2
+    dest: '/usr/share/applications/Postman.desktop'
+    owner: root
+    group: root
+    mode: 'u=rw,go=r'

@@ -93,9 +93,8 @@ Ansible playbooks.
 
 ## Test Developer Tools
 * [soapui](https://www.soapui.org/)
+* [postman](https://www.getpostman.com/)
 * TBD - [JMeter](http://jmeter.apache.org/)
-* TBD - Chrome Pluging - ARC
-* TBD - Postman
 
 ## Python Developer tools
 * TBD - Anaconda
