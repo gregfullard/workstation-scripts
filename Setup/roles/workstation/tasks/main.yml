@@ -149,3 +149,11 @@
       - fonts-crosextra-carlito
     state: present
     install_recommends: yes
+
+- name: "Workstation | Add show desktop entry"
+  become: yes
+  template:
+    src: show-desktop.desktop.j2
+    dest: "/home/{{ user_name }}/.local/share/applications/show-desktop.desktop"
+    owner: "{{ user_name }}"
+    group: "{{ user_name }}"
