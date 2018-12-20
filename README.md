@@ -207,20 +207,20 @@ To review whether the configuration was successful, you can do the following at 
      * Start thunderbird once, this will create a folder ~/.thunderbird
      * Close it immediately
      * Now edit the file ~/.thunderbird/profiles.ini
-     * Afterwards you can open Thunderbird again and all accounts will be ready for you to download
      * Content should be:
 
-```shell     
-[General]
-StartWithLastProfile=1
+        ```    
+        [General]
+        StartWithLastProfile=1
 
-[Profile0]
-Name=default
-IsRelative=0
-Path=/home/gregf/Email/Thunderbird/Profiles/Thunderbird.default
-Default=1
-```
+        [Profile0]
+        Name=default
+        IsRelative=0
+        Path=/home/gregf/Email/Thunderbird/Profiles/Thunderbird.default
+        Default=1
+        ```
 
+     * Now you can open Thunderbird again and all accounts will be ready for you to download
  * Download and Install JBDS
      * Download the latest JBoss Developer Studio install
      * Run the installer
@@ -246,15 +246,21 @@ Default=1
      * Install all the available service packs
      * Stop AEM
      * Create an aemstart.sh shell script with the following content:
-```shell       
-#!/bin/bash
-echo "Starting up AEM 6.3"
-crx-quickstart/bin/start
+
+        ```       
+        #!/bin/bash
+        echo "Starting up AEM 6.3"
+        crx-quickstart/bin/start
+        ```
+
      * Create an aemstop.sh shell script with the following content:
-#!/bin/bash
-echo "Stopping AEM 6.3"
-crx-quickstart/bin/stop
-```
+
+        ```
+        #!/bin/bash
+        echo "Stopping AEM 6.3"
+        crx-quickstart/bin/stop
+        ```
+
      * chmod 755 both files, to ensure they are executable
      * Start up AEM using the start script
      * Open Package Share
@@ -262,10 +268,12 @@ crx-quickstart/bin/stop
      * The forms install will cause a BouncyCastle error
      * Stop your AEM instance
      * Open your file system (not CRX) and edit the sling.properties file under the quickstart/conf folder
-```shell
-sling.bootdelegation.class.com.rsa.jsafe.provider.JsafeJCE=com.rsa.*
-sling.bootdelegation.class.org.bouncycastle.jce.provider.BouncyCastleProvider= org.bouncycastle.*
-```
+
+        ```
+        sling.bootdelegation.class.com.rsa.jsafe.provider.JsafeJCE=com.rsa.*
+        sling.bootdelegation.class.org.bouncycastle.jce.provider.BouncyCastleProvider= org.bouncycastle.*
+        ```
+
      * Restart AEM
  * Download and Install Sling
      * Download the latest sling jar from https://sling.apache.org
@@ -294,7 +302,7 @@ sling.bootdelegation.class.org.bouncycastle.jce.provider.BouncyCastleProvider= o
         sudo nano ~/.config/user-dirs.dirs
         sudo nano /etc/xdg/user-dirs.defaults
         ```
-     
+
      * Comment out the unwanted lines
  * Remove unwanted Nautilus links in Home holder
      * Open Nautilus home folder
