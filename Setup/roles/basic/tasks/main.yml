@@ -4,17 +4,20 @@
 # Install packages
 - name: "BASE | Installing Base Software"
   become: yes
-  apt: pkg={{ item }} state=installed
-  with_items:
-  - dnsutils
-  - apt-transport-https
-  - ca-certificates
-  - curl
-  - software-properties-common
-  - tar
-  - unzip
-  - python
-
+  apt:
+    pkg:
+      - dnsutils
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - software-properties-common
+      - tar
+      - unzip
+      - python
+      - python3
+      - python3-pip
+    state: present
+    autoclean: yes
 
 # Copying files
 #- name: "Some copy tasks"

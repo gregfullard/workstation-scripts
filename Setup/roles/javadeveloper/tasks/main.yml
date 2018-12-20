@@ -4,9 +4,9 @@
 # Maven
 - name: "Installing Java Developer Software"
   become: yes
-  apt: pkg={{ item }} state=installed
-  with_items:
-  - maven
+  apt:
+    pkg: maven
+    state: present
 
 # This  package is used to manage repositories from which software is installed (I believe)
 - name: "JDK8 :: Install add-apt-repostory"
@@ -24,11 +24,12 @@
 
 - name: "JDK8 :: Install Oracle Java 8"
   become: yes
-  apt: name={{item}} state=latest
-  with_items:
-    - oracle-java8-installer
-    - ca-certificates
-    - oracle-java8-set-default
+  apt:
+    name:
+      - oracle-java8-installer
+      - ca-certificates
+      - oracle-java8-set-default
+    state: latest
 
     #- name: Accept Java 7 License
     #  become: yes

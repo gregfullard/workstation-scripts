@@ -4,22 +4,40 @@
 # Install Easy packages
 - name: "BASE | Installing Base Workstation Software"
   become: yes
-  apt: pkg={{ item }} state=installed
-  with_items:
-  - virtualbox
-  - shutter
-  - vokoscreen
-  - gscan2pdf
-  - breeze-icon-theme
-  - vlc
-  - kdenlive
-  - gimp
-  - thunderbird
-  - cifs-utils
-  - smbclient
-  - keepassx
-  - onedrive
-#  - gksu
+  apt:
+    pkg:
+      - virtualbox
+      - shutter
+      - vokoscreen
+      - gscan2pdf
+      - breeze-icon-theme
+      - vlc
+      - kdenlive
+      - gimp
+      - thunderbird
+      - cifs-utils
+      - smbclient
+      - keepassx
+      - onedrive
+    state: present
+    autoclean: yes
+
+#  apt: pkg={{ item }} state=installed
+#  with_items:
+#  - virtualbox
+#  - shutter
+#  - vokoscreen
+#  - gscan2pdf
+#  - breeze-icon-theme
+#  - vlc
+#  - kdenlive
+#  - gimp
+#  - thunderbird
+#  - cifs-utils
+#  - smbclient
+#  - keepassx
+#  - onedrive
+##  - gksu (Not available from 17.04 onwards)
 
 # Create Folders
 - name: "FOLDER | Software"
@@ -123,8 +141,10 @@
 - name: "WINE | Installing WineHQ Stable"
   when: ansible_distribution == "Ubuntu" and ansible_distribution_version == "16.04"
   become: yes
-  apt: pkg={{ item }} state=installed install_recommends=yes
-  with_items:
-  - winehq-stable
-  - winetricks
-  - fonts-crosextra-carlito
+  apt:
+    pkg:
+      - winehq-stable
+      - winetricks
+      - fonts-crosextra-carlito
+    state: present
+    install_recommends: yes

@@ -34,7 +34,7 @@ then
     echo 'Directory '$homefolder'/WorkstationScripts exists already. We will back it up and create a new one from git'
     now=$(date +"%Y%m%d_%H%M%S")
     cp -r ./WorkstationScripts ./zzzWorkstationScripts_$now
-    echo 'Existing '$homefolder'/WorkstationScripts folder backed up to'./zzzWorkstationScripts_$now
+    echo 'Existing '$homefolder'/WorkstationScripts folder backed up to './zzzWorkstationScripts_$now
     sudo rm ./WorkstationScripts -R
 fi
 git clone git@github.com:gregfullard/workstation-scripts.git WorkstationScripts

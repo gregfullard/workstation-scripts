@@ -13,9 +13,13 @@
 
 - name: "SOAPUI | Install dependencies"
   become: yes
-  apt: name={{ item }} state=latest
-  with_items:
-    - unzip
+  apt:
+    name:
+      - unzip
+    state: present
+#  apt: name={{ item }} state=latest
+#  with_items:
+#    - unzip
 
 - name: "SOAPUI | Create SoapUI Directory"
   become: yes
