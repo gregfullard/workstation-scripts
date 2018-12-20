@@ -19,6 +19,15 @@
     state: present
     autoclean: yes
 
+- name: "BASE | Create Base download directory"
+  become: true
+  file:
+    dest="{{ download_base_folder }}"
+    state=directory
+    owner="{{ user_name }}"
+    group="{{ user_name }}"
+
+
 # Copying files
 #- name: "Some copy tasks"
 #  copy: src=<source location> dest=<destination>  owner=<owner of file>  group<group for the file>  mode=<permissions eg. 755>

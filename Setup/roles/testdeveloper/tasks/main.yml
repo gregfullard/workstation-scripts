@@ -31,14 +31,14 @@
 
 - name: "SOAPUI | Download SoapUI binaries"
   get_url: url=http://smartbearsoftware.com/distrib/soapui/{{ soapui_version }}/SoapUI-{{ soapui_version }}-linux-bin.tar.gz
-    dest={{ home_folder }}/Downloads/soapui-{{ soapui_version }}.tar.gz
+    dest={{download_base_folder}}/soapui-{{ soapui_version }}.tar.gz
   register: soapui_download
 
 - name: "SOAPUI | Untar SoapUI"
   when: soapui_download.changed
   unarchive:
     copy=no
-    src={{ home_folder }}/Downloads/soapui-{{ soapui_version }}.tar.gz
+    src={{download_base_folder}}/soapui-{{ soapui_version }}.tar.gz
     dest={{ soapui_install_dir }}
 
 - name: "SOAPUI | Create SoapUI version directory Symlink"

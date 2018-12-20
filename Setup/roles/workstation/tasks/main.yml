@@ -105,12 +105,12 @@
 - name: "ZOOM | Download Zoom DEB"
   get_url:
        url="https://zoom.us/client/latest/zoom_amd64.deb"
-       dest="/home/{{ user_name }}/Downloads/zoom_amd64.deb"
+       dest="{{download_base_folder}}/zoom_amd64.deb"
 
 # Install zoom
 - name: "ZOOM | Install .deb files"
   become: yes
-  apt: deb="/home/{{ user_name }}/Downloads/zoom_amd64.deb"
+  apt: deb="{{download_base_folder}}/zoom_amd64.deb"
 
 # Wine
   # Enable i386 architecture

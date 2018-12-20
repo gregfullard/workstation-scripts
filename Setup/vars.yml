@@ -3,3 +3,4 @@
 # Note: All role-specific variables are initialised in the role folders
 user_name: gregf
 home_folder: "/home/{{ user_name }}"
+download_base_folder: "/home/{{ user_name }}/Downloads/AnsibleDownloads"

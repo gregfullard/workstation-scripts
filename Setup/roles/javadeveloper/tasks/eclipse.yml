@@ -8,15 +8,17 @@
 #
 # Ref: https://github.com/AlbanAndrieu/ansible-eclipse
 
+
+
 - name: "ECLIPSE | Check user exists"
-  user: name={{ eclipse_owner }} state=present
+  user: name={{ user_name }} state=present
 
-- name: "ECLIPSE | Check user home directory"
-  stat: path={{ eclipse_owner_home }}
-  register: home_present
+#- name: "ECLIPSE | Check user home directory"
+#  stat: path={{ eclipse_owner_home }}
+#  register: home_present
 
-- debug: msg="ECLIPSE | Path exists and is a directory"
-  when: home_present.stat.isdir is defined and home_present.stat.isdir == true
+#- debug: msg="ECLIPSE | Path exists and is a directory"
+#  when: home_present.stat.isdir is defined and home_present.stat.isdir == true
 
 ###- name: "ECLIPSE | Create temporary directory"
 ###  shell: mktemp -d
@@ -24,67 +26,79 @@
 ###  tags: eclipse_setup
 ###  changed_when: false
 
-- set_fact: eclipse_home={{ eclipse_home_dir }}
-- set_fact: eclipse="{{ eclipse_home_dir }}/eclipse"
+#- name: "ECLIPSE | Set eclipse_home variable"
+#  set_fact: eclipse_home={{ eclipse_home_dir }}
 
-- debug: msg="ECLIPSE | Eclipse base dir is {{ eclipse_base_dir }}"
-- debug: msg="ECLIPSE | Eclipse home dir is {{ eclipse_home }}"
-- debug: msg="ECLIPSE | Eclipse dir is {{ eclipse }}"
-- debug: msg="ECLIPSE | Eclipse download URL is {{ eclipse_url }}"
+#- name: "ECLIPSE | Set eclipse variable"
+#  set_fact: eclipse="{{ eclipse_home_dir }}/eclipse"
+
+#- name: "ECLIPSE | Debug variables : eclipse_base_dir"
+#  debug: msg="Eclipse base dir is {{ eclipse_base_dir }}"
+
+#- name: "ECLIPSE | Debug variables : eclipse_home"
+#  debug: msg="Eclipse home dir is {{ eclipse_home }}"
+
+#- name: "ECLIPSE | Debug variables : eclipse"
+#  debug: msg="Eclipse dir is {{ eclipse }}"
+
+#- name: "ECLIPSE | Debug variables : eclipse_url"
+#  debug: msg="Eclipse download URL is {{ eclipse_url }}"
 
 - name: "ECLIPSE | Download eclipse if we don't have it"
   connection: local
-  get_url: url={{ eclipse_url }} dest=/home/{{ user_name }}/Downloads/{{ eclipse_archive }} force=no
+  get_url: url={{ eclipse_url }} dest={{download_base_folder}}/{{ eclipse_archive }} force=no
   register: eclipse_download
 
-- debug: msg="ECLIPSE | Eclipse download {{ eclipse_download }}"
+#- name: "ECLIPSE | Debug Eclipse download"
+#  debug: msg="ECLIPSE | Eclipse download {{ eclipse_download }}"
 
 - name: "ECLIPSE | Create Eclipse base directory"
   become: true
   file:
     dest="{{ eclipse_base_dir }}"
     state=directory
-    owner="{{ eclipse_owner }}"
-    group="{{ eclipse_group }}"
+    owner="{{ user_name }}"
+    group="{{ user_name }}"
   #when: eclipse_download.changed
   #tags: eclipse_setup
 
 - name: "ECLIPSE | Create Eclipse home directory"
   become: true
   file:
-    dest="{{ eclipse_home }}"
+    dest="{{ eclipse_home_dir }}"
     state=directory
-    owner="{{ eclipse_owner }}"
-    group="{{ eclipse_group }}"
+    owner="{{ user_name }}"
+    group="{{ user_name }}"
 
 - name: "ECLIPSE | Copy eclipse archive into place"
+  when: eclipse_download.changed
   become: true
-  copy: src=/home/{{ user_name }}/Downloads/{{ eclipse_archive }} dest="{{ eclipse_base_dir }}/{{ eclipse_archive }}" owner="{{ eclipse_owner }}" group="{{ eclipse_group }}" mode=644
+  copy: src={{download_base_folder}}/{{ eclipse_archive }} dest="{{ eclipse_base_dir }}/{{ eclipse_archive }}" owner="{{ user_name }}" group="{{ user_name }}" mode=644
   #ignore_errors: yes
   #tags: eclipse_setup
 
 - name: "ECLIPSE | Untar Eclipse archive"
-  #when: eclipse_download.changed
+  when: eclipse_download.changed
   unarchive:
     copy=no
     src={{ eclipse_base_dir }}/{{ eclipse_archive }}
-    dest={{ eclipse_home }}
+    dest={{ eclipse_home_dir }}
 
   # Note: this simply creates the .desktop file, which can then be found via the launcher and pinned to the dock
 - name: "ECLIPSE | Configure eclipse desktop entry"
   template: src=../templates/eclipse.desktop.j2 dest={{ eclipse_desktop }}
-  when: (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu')
+  #when: (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu') and eclipse_download.changed
   ignore_errors: yes
   #tags: eclipse_setup
 
 - name: "ECLIPSE | Create a link to eclipse"
-  when: eclipse_download.changed
+  #when: eclipse_download.changed
   become: yes
   file:
-    src="{{ eclipse }}/eclipse"
+    src="{{ eclipse_home_dir }}/eclipse/eclipse"
     dest=/usr/bin/eclipse
     state=link
-    owner="{{ eclipse_owner }}"
+    owner="{{ user_name }}"
 
 #- import_tasks: cleanups.yml
 
