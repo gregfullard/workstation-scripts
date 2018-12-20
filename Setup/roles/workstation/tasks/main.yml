@@ -19,6 +19,7 @@
       - smbclient
       - keepassx
       - onedrive
+      - xdotool
     state: present
     autoclean: yes
 
