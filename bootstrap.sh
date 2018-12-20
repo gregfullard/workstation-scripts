@@ -25,6 +25,12 @@ echo '****************'
 echo '**************** Install Git'
 sudo apt-get -y install git
 
+# Configure Git user
+echo '****************'
+echo '**************** Configure Git user'
+git config --global user.email "gfullard@gmail.com"
+git config --global user.name "Greg Fullard"
+
 # Clone the workstation scripts folder
 echo '****************'
 echo '**************** Clone the workstation scripts folder'
