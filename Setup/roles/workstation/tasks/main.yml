@@ -1,5 +1,5 @@
-# Contains installations that are needed on all workstation machine only
-# ======================================================================
+# Contains installations that are needed on all workstation machines only
+# =======================================================================
 
 # Install Easy packages
 - name: "BASE | Installing Base Workstation Software"
@@ -18,6 +18,7 @@
   - cifs-utils
   - smbclient
   - keepassx
+  - onedrive
 #  - gksu
 
 # Create Folders
@@ -25,14 +26,16 @@
   file: path=/home/{{ user_name }}/Software state=directory owner={{ user_name }} group={{ user_name }}
 - name: "FOLDER | GoogleDrive"
   file: path=/home/{{ user_name }}/GoogleDrive state=directory owner={{ user_name }} group={{ user_name }}
+- name: "FOLDER | OneDrive"
+  file: path=/home/{{ user_name }}/OneDrive state=directory owner={{ user_name }} group={{ user_name }}
 - name: "FOLDER | Email"
   file: path=/home/{{ user_name }}/Email state=directory owner={{ user_name }} group={{ user_name }}
 - name: "FOLDER | Greg_OfflineData"
   file: path=/home/{{ user_name }}/Greg_OfflineData state=directory owner={{ user_name }} group={{ user_name }}
 - name: "FOLDER | Repos"
   file: path=/home/{{ user_name }}/Repos state=directory owner={{ user_name }} group={{ user_name }}
-- name: "FOLDER | Repos/DigitalPlatoon"
-  file: path=/home/{{ user_name }}/Repos/DigitalPlatoon state=directory owner={{ user_name }} group={{ user_name }}
+- name: "FOLDER | Repos/Digital"
+  file: path=/home/{{ user_name }}/Repos/Digital state=directory owner={{ user_name }} group={{ user_name }}
 - name: "FOLDER | Repos/Learning"
   file: path=/home/{{ user_name }}/Repos/Learning state=directory owner={{ user_name }} group={{ user_name }}
 
