@@ -126,7 +126,9 @@ The following folders are created
 * ~/Email
 * ~/Greg_OfflineData
 * ~/GoogleDrive
+* ~/OneDrive
 * ~/Repos
+* ~/Software
 
 # Custom configuration
 * TBD - Insync folders to sync (Manual)
@@ -226,8 +228,10 @@ Default=1
      * Add the following update sites to JBDS (Help > Install new Software > Add...:
      * Adobe Dev Tools, https://eclipse.adobe.com/aem/dev-tools/
      * RestEditor, http://resteditor.sourceforge.net/eclipse/
- * TBD - Download and Install Adobe Reader
- * TBD - Download and Install Balsamiq Mockups
+ * Download and Install Adobe Reader
+     * TODO
+ * Download and Install Balsamiq Mockups
+     * TODO
      * https://support.balsamiq.com/installation/linux/
  * Download and Install Apache Directory Studio
      * Download from a suitable Apache Mirror (Be sure to grab the Studio download, not the ApacheDS one)
@@ -241,6 +245,7 @@ Default=1
      * Install all the available service packs
      * Stop AEM
      * Create an aemstart.sh shell script with the following content:
+```shell       
 #!/bin/bash
 echo "Starting up AEM 6.3"
 crx-quickstart/bin/start
@@ -248,6 +253,7 @@ crx-quickstart/bin/start
 #!/bin/bash
 echo "Stopping AEM 6.3"
 crx-quickstart/bin/stop
+```
      * chmod 755 both files, to ensure they are executable
      * Start up AEM using the start script
      * Open Package Share
@@ -255,8 +261,10 @@ crx-quickstart/bin/stop
      * The forms install will cause a BouncyCastle error
      * Stop your AEM instance
      * Open your file system (not CRX) and edit the sling.properties file under the quickstart/conf folder
+```shell
 sling.bootdelegation.class.com.rsa.jsafe.provider.JsafeJCE=com.rsa.*
 sling.bootdelegation.class.org.bouncycastle.jce.provider.BouncyCastleProvider= org.bouncycastle.*
+```
      * Restart AEM
  * Download and Install Sling
      * Download the latest sling jar from https://sling.apache.org
@@ -309,13 +317,25 @@ sling.bootdelegation.class.org.bouncycastle.jce.provider.BouncyCastleProvider= o
  * TBD - Folder views (Set to list view as default)
 
 # Manual steps at the end :: Ubuntu 18.04 (Make these less over time)
-
+ * Double-check PDF generation from Sphinx
+    * TODO
+ * Install Printer
+    * TODO
+ * Remove unwanted Nautilus Places
+    * TODO
+ * Remove unwanted Nautilus links in Home holder
+    * TODO   
+ * Edit Nautilus Bookmarks  
+    * TODO  
+ * Resize Launcher (super key > dock)
+ * Add View Desktop button to dock
+ * Lock apps to dock (Terminal, Chrome, Virtualbox, Atom, Shutter)  
+ * Unlock apps from dock (LibreOffice, Amazon, System Settings)  
+ * Folder views (Set to list view as default)  
+    * TODO
 
 # Reviewing Manual Steps
  * Start up BasicTools VM. Check files on VMShare can be accessed
- * Start up AEM JEE VM. Check files on VMShare can be accessed
- * Start up AnsibleHomeBase VM. Check files on VMShare can be accessed
- * Start up LCES4 VM. Check files on VMShare can be accessed
  * Generate Sphinx docs for a cloned repo
  * Verify GoogleDrive synching
  * Verify Dropbox synching
