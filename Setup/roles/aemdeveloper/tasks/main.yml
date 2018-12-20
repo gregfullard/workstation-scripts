@@ -1,0 +1,43 @@
+- name: "AEM | Create AEM home directory"
+  become: true
+  file:
+    dest="{{ aem_base_dir }}"
+    state=directory
+    owner="{{ user_name }}"
+    group="{{ user_name }}"
+
+- name: "AEM | Create AEM 6.3 home directory"
+  become: true
+  file:
+    dest="{{ aem_base_dir }}/6.3"
+    state=directory
+    owner="{{ user_name }}"
+    group="{{ user_name }}"
+
+- name: "AEM | Create AEM 6.3 author directory"
+  become: true
+  file:
+    dest="{{ aem_base_dir }}/6.3/author"
+    state=directory
+    owner="{{ user_name }}"
+    group="{{ user_name }}"
+
+- name: "AEM | Create AEM 6.3 publish directory"
+  become: true
+  file:
+    dest="{{ aem_base_dir }}/6.3/publish"
+    state=directory
+    owner="{{ user_name }}"
+    group="{{ user_name }}"
+
+- name: "AEM | Add AEM Author start shell script"
+  template: src=../templates/aem.6.3.start.author.j2 dest={{ aem_base_dir }}/6.3/author/startaem.sh mode=a+x
+
+- name: "AEM | Add AEM Author stop shell script"
+  template: src=../templates/aem.6.3.stop.author.j2 dest={{ aem_base_dir }}/6.3/author/stopaem.sh mode=a+x
+
+- name: "AEM | Add AEM Publish start shell script"
+  template: src=../templates/aem.6.3.start.publish.j2 dest={{ aem_base_dir }}/6.3/publish/startaem.sh mode=a+x
+
+- name: "AEM | Add AEM Publish stop shell script"
+  template: src=../templates/aem.6.3.stop.publish.j2 dest={{ aem_base_dir }}/6.3/publish/stopaem.sh mode=a+x

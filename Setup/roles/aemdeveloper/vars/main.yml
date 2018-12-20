@@ -1,0 +1,2 @@
+# Variables required for AEM setups
+aem_base_dir: "{{ home_folder }}/Software/AEM"

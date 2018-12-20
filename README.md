@@ -237,30 +237,13 @@ To review whether the configuration was successful, you can do the following at 
      * Download from a suitable Apache Mirror (Be sure to grab the Studio download, not the ApacheDS one)
      * Extract to ~/Software/ApacheDirectoryStudio
  * Download and Install AEM
-     * Drop AEM Quickstart JAR and Licence file at ~/Software/<YourChosenName>/author
+     * Drop AEM Quickstart JAR and Licence file at ~/Software/AEM/<version>/author
      * Open terminal
      * Run java -jar aem-author-6.3.0-p4502.jar -nointeractive -gui
      * Once AEM starts up, log in with admin:admin
      * Open Package Share
      * Install all the available service packs
      * Stop AEM
-     * Create an aemstart.sh shell script with the following content:
-
-        ```       
-        #!/bin/bash
-        echo "Starting up AEM 6.3"
-        crx-quickstart/bin/start
-        ```
-
-     * Create an aemstop.sh shell script with the following content:
-
-        ```
-        #!/bin/bash
-        echo "Stopping AEM 6.3"
-        crx-quickstart/bin/stop
-        ```
-
-     * chmod 755 both files, to ensure they are executable
      * Start up AEM using the start script
      * Open Package Share
      * Find the latest Forms package for Linux. Download and install it. (Search for "AEM-FORMS-6.3")
@@ -274,6 +257,7 @@ To review whether the configuration was successful, you can do the following at 
         ```
 
      * Restart AEM
+     * Do the same for the publish instance
  * Download and Install Sling
      * Download the latest sling jar from https://sling.apache.org
      * Drop the jar at ~/Software/Sling/<Your_Downloaded_Version>
