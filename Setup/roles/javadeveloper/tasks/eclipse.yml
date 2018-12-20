@@ -101,8 +101,39 @@
     owner="{{ user_name }}"
 
 #- import_tasks: cleanups.yml
+# ==============================
+# ==============================
+# cleanups
+# ==============================
+# ==============================
+#- file: path="{{ item }}" state=absent
+#  with_fileglob:
+#    - "{{ eclipse_home }}/plugins/org.eclipse.jpt.*"
+#    - "{{ eclipse_home }}/features/org.eclipse.jpt.*"
+#    - "{{ eclipse_home }}/plugins/*jgit*"
+#    - "{{ eclipse_home }}/features/*jgit*"
+#    - "{{ eclipse_home }}/plugins/*egit*"
+#    - "{{ eclipse_home }}/features/*egit*"
+#    # those seems to break some stuff, need more testing...
+#    # - "{{ eclipse_home }}/plugins/org.eclipse.pde*"
+#    # - "{{ eclipse_home }}/features/org.eclipse.pde*"
+#    # - "{{ eclipse_home }}/plugins/*validation*"
+#    # - "{{ eclipse_home }}/features/*validation*"
+#  ignore_errors: true
 
 #- import_tasks: lombok.yml
+# ==============================
+# ==============================
+# lombok
+# ==============================
+# ==============================
+#
+#- get_url: url=http://projectlombok.org/downloads/lombok.jar dest={{ eclipse_home }}/lombok.jar
+#  become: yes
+#
+#- lineinfile: dest={{ eclipse_home }}/eclipse.ini line='-javaagent:{{ eclipse_home }}/lombok.jar'
+#  become: yes
+
 
 #- import_tasks: config.yml
 #  when: eclipse_ini_enabled
@@ -286,3 +317,84 @@
 ###  become: yes
 
 #- debug: msg=" eclipse | Start eclipse {{ eclipse }}"
+
+# ======================================
+# ======================================
+# ECLIPSE CONFIGS
+# ======================================
+# ======================================
+#- name:  eclipse | Configure eclipse ini configuration (-Xverify:none)
+#  lineinfile: dest={{ eclipse_home }}/eclipse.ini line='-Xverify:none'
+#  become: yes
+#
+#- name:  eclipse | Configure eclipse ini configuration (clean)
+#  lineinfile: dest={{ eclipse_home }}/eclipse.ini line='-clean' insertbefore='-startup'
+#  become: yes
+#
+#- name:  eclipse | Configure eclipse ini configuration (Launcher GTK_version 2)
+#  replace: dest={{ eclipse_home }}/eclipse.ini regexp='(--launcher\.XXMaxPermSize)\n256m' replace='\1\n{{ eclipse_launcher_XXMaxPermSize }}'
+#  when: eclipse_launcher_XXMaxPermSize | length > 0
+#  become: yes
+#
+#- name:  eclipse | Configure eclipse ini configuration (Launcher XXMaxPermSize)
+##  lineinfile: regexp="(--launcher\.XXMaxPermSize)\n256m" line='\1\n{{ eclipse_launcher_XXMaxPermSize }}' dest={{ eclipse_home }}/eclipse.ini
+#  replace: dest={{ eclipse_home }}/eclipse.ini regexp='(--launcher\.XXMaxPermSize)\n256m' replace='\1\n{{ eclipse_launcher_XXMaxPermSize }}'
+#  when: eclipse_launcher_XXMaxPermSize | length > 0
+#  become: yes
+#
+#- name:  eclipse | Configure eclipse ini configuration (XXMaxPermSize)
+#  lineinfile: regexp="^-XX:MaxPermSize=256m" line="-XX:MaxPermSize={{ eclipse_XXMaxPermSize }}" dest={{ eclipse_home }}/eclipse.ini
+#  when: eclipse_XXMaxPermSize | length > 0
+#  become: yes
+#
+#- name:  eclipse | Configure eclipse ini configuration (Xms)
+#  lineinfile: regexp="^-Xms40m" line="-Xms{{ eclipse_Xms }}" dest={{ eclipse_home }}/eclipse.ini
+#  when: eclipse_Xms | length > 0
+#  become: yes
+#
+#- name:  eclipse | Configure eclipse ini configuration (Xmx)
+#  lineinfile: regexp="^-Xmx512m" line="-Xmx{{ eclipse_Xmx }}" dest={{ eclipse_home }}/eclipse.ini
+#  when: eclipse_Xmx | length > 0
+#  become: yes
+#
+##TODO add
+##-Djava.net.preferIPv4Stack=true
+#
+##- lineinfile: dest={{ eclipse_home }}/eclipse.ini line='--launcher.GTK_version\n'
+
+
+# ======================================
+# ======================================
+# ECLIPSE FEATURES
+# ======================================
+# ======================================
+#- shell: eclipse -application org.eclipse.equinox.p2.director -noSplash -repository {{ item.repo }} -installIUs {{ item.feature }}
+#  with_items:
+##EclEmma Java Code Coverage	2.3.3.201602231923	com.mountainminds.eclemma.feature.feature.group	Mountainminds GmbH & Co. KG
+#    - { repo: 'http://update.eclemma.org/', feature: 'com.mountainminds.eclemma.feature.feature.group'}
+#    - { repo: 'http://download.eclipse.org/technology/m2e/releases/', feature: 'org.eclipse.m2e.feature.feature.group'}
+#    - { repo: 'http://download.jboss.org/jbosstools/mars/development/updates/', feature: 'org.jboss.ide.eclipse.as.feature.feature.group'}
+#    - { repo: 'http://velo.github.io/maven-formatter-plugin/p2/1.5.0', feature: 'com.marvinformatics.formatter.feature.feature.group'}
+#    - { repo: 'http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-buildhelper/0.15.0/N/0.15.0.201405280027/', feature: 'org.sonatype.m2e.buildhelper.feature.feature.group'}
+##    - { repo: 'http://beust.com/eclipse/', feature: 'org.testng.eclipse.feature.group'}
+#    - { repo: 'http://download.jboss.org/jbosstools/updates/m2e-extensions/m2e-apt', feature: 'org.jboss.tools.maven.apt.feature.feature.group'}
+#    - { repo: 'https://raw.githubusercontent.com/wakatime/eclipse-wakatime/master/update-site/', feature: 'com.wakatime.eclipse.feature.feature.group'}
+##    - { repo: 'http://download.eclipse.org/technology/dltk/updates/', feature: 'org.eclipse.jst.webpageeditor.feature.feature.group'}
+##TODO install dbeaver https://marketplace.eclipse.org/content/dbeaver
+##DBeaver Core	3.8.5	org.jkiss.dbeaver.core.feature.feature.group	Serge Rider
+##    - { repo: 'http://dbeaver.jkiss.org/update/latest/', feature: 'org.jkiss.dbeaver.core.feature.feature.group'}
+##TODO valgrind http://download.eclipse.org/linuxtools/update
+##  Vagrant Tooling	2.2.0.201612072123	org.eclipse.linuxtools.vagrant.feature.feature.group	Eclipse Linux Tools
+##    - { repo: 'http://download.eclipse.org/linuxtools/update/', feature: 'org.eclipse.linuxtools.vagrant.feature.feature.group'}
+##TODO install Shell Script Editor for Eclipse https://marketplace.eclipse.org/category/free-tagging/shell-script
+##  Dynamic Languages Toolkit - ShellEd IDE	5.7.0.201610180416	org.eclipse.dltk.sh.feature.group	Eclipse DLTK
+##    - { repo: 'http://download.eclipse.org/technology/dltk/updates/', feature: 'org.eclipse.dltk.sh.feature.group'}
+##TODO See https://mcuoneclipse.com/2012/06/25/5-best-eclipse-plugins-1-eclox-with-doxygen-graphviz-and-mscgen/
+##http://download.gna.org/eclox/update/
+##TODO install groovy compiler
+##See https://stackoverflow.com/questions/22875051/eclipse-cant-create-groovy-class-in-4-3-2
+##Groovy-Eclipse Feature	2.9.2.xx-201702282040-e46	org.codehaus.groovy.eclipse.feature.feature.group	Codehaus.org
+##    - { repo: 'http://dist.springsource.org/snapshot/GRECLIPSE/e4.6', feature: 'org.codehaus.groovy.eclipse.feature.feature.group'}
+##TODO sconsolidator
+##http://www.sconsolidator.com/update
+#  ignore_errors: true
