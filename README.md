@@ -289,8 +289,12 @@ sling.bootdelegation.class.org.bouncycastle.jce.provider.BouncyCastleProvider= o
      * Open gscan2pdf. Do a test scan
  * Remove unwanted Nautilus Places
      * https://askubuntu.com/questions/762591/how-to-remove-unwanted-default-bookmarks-in-nautilus
-     * sudo nano ~/.config/user-dirs.dirs
-     * sudo nano /etc/xdg/user-dirs.defaults
+
+        ```
+        sudo nano ~/.config/user-dirs.dirs
+        sudo nano /etc/xdg/user-dirs.defaults
+        ```
+     
      * Comment out the unwanted lines
  * Remove unwanted Nautilus links in Home holder
      * Open Nautilus home folder
