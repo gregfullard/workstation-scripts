@@ -233,9 +233,6 @@ To review whether the configuration was successful, you can do the following at 
  * Download and Install Balsamiq Mockups
      * TODO
      * https://support.balsamiq.com/installation/linux/
- * Download and Install Apache Directory Studio
-     * Download from a suitable Apache Mirror (Be sure to grab the Studio download, not the ApacheDS one)
-     * Extract to ~/Software/ApacheDirectoryStudio
  * Download and Install AEM
      * Drop AEM Quickstart JAR and Licence file at ~/Software/AEM/<version>/author
      * Open terminal
