@@ -3,11 +3,11 @@
   vars_files:
   - vars.yml
   roles:
-#  - basic
-#  - workstation
-#  - developer
-#  - javadeveloper
-#  - aemdeveloper
-#  - ldapdeveloper
-#  - dbdeveloper
+  - basic
+  - workstation
+  - developer
+  - javadeveloper
+  - aemdeveloper
+  - ldapdeveloper
+  - dbdeveloper
   - testdeveloper
