@@ -84,7 +84,11 @@ Ansible playbooks.
 * TBD - Eclipse plugin : rest
 * TBD - Eclipse plugin : AEM
 
+## LDAP Developer tools
+* [Apache Directory Studio](https://directory.apache.org/studio/)
+
 ## AEM Dev tools
+* Folders and scripts for starting up AEM
 * TBD - OAKRun
 * TBD - Vault
 
@@ -94,7 +98,7 @@ Ansible playbooks.
 ## Test Developer Tools
 * [soapui](https://www.soapui.org/)
 * [postman](https://www.getpostman.com/)
-* TBD - [JMeter](http://jmeter.apache.org/)
+* [JMeter](http://jmeter.apache.org/)
 
 ## Python Developer tools
 * TBD - Anaconda

@@ -1,0 +1,12 @@
+{{ ansible_managed | comment }}
+
+[Desktop Entry]
+Version={{ jmeter_version }}
+Type=Application
+Name=Jmeter
+Icon={{ jmeter_base_dir }}/apache-jmeter-5.0/docs/images/jmeter_square.png
+Exec="{{ jmeter_base_dir }}/apache-jmeter-5.0/bin/jmeter" %f
+Comment=Jmeter
+Categories=Development;
+Terminal=false
+StartupWMClass=Jmeter

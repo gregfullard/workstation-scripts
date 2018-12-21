@@ -21,3 +21,12 @@ postman_existing_download_version: none
 
 # Default value for existing installed version
 postman_existing_installed_version: none
+
+# JMETER
+# ======
+jmeter_version: "5.0"
+jmeter_base_dir: "{{ home_folder }}/Software/Jmeter"
+jmeter_archive: apache-jmeter-5.0.tgz
+jmeter_url: http://apache.saix.net//jmeter/binaries/{{jmeter_archive}}
+jmeter_owner_home: "{{ home_folder }}"
+jmeter_desktop: "{{ jmeter_owner_home }}/.local/share/applications/jmeter.desktop"

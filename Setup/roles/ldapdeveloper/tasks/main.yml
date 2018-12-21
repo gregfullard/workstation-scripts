@@ -51,5 +51,3 @@
     dest=/usr/bin/directory-studio
     state=link
     owner="{{ user_name }}"
-
-# Create standalone DS Server

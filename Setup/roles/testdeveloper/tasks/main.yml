@@ -187,8 +187,61 @@
 - name: "POSTMAN | Install Postman desktop file"
   become: yes
   template:
-    src: Postman.desktop.j2
+    src: postman.desktop.j2
     dest: '/usr/share/applications/Postman.desktop'
     owner: root
     group: root
     mode: 'u=rw,go=r'
+
+# JMeter
+- name: "JMETER | Create Jmeter home directory"
+  become: true
+  file:
+    dest="{{ jmeter_base_dir }}"
+    state=directory
+    owner="{{ user_name }}"
+    group="{{ user_name }}"
+
+# Download Jmeter
+- name: "JMETER | Download Jmeter if we don't have it"
+  connection: local
+  get_url: url={{ jmeter_url }} dest={{download_base_folder}}/{{ jmeter_archive }} force=no
+  register: jmeter_download
+
+# Create folder where studio will be extracted
+- name: "JMETER | Create Jmeter base directory"
+  become: true
+  file:
+    dest="{{ jmeter_base_dir }}"
+    state=directory
+    owner="{{ user_name }}"
+    group="{{ user_name }}"
+
+# Copy the jmeter archive file to where it will be extracted
+- name: "JMETER | Copy Jmeter archive into place"
+  when: jmeter_download.changed
+  become: true
+  copy: src={{download_base_folder}}/{{ jmeter_archive }} dest="{{ jmeter_base_dir }}/{{ jmeter_archive }}" owner="{{ user_name }}" group="{{ user_name }}" mode=644
+
+# Extract the studio archive file
+- name: "JMETER | Untar Jmeter archive"
+  when: jmeter_download.changed
+  unarchive:
+    copy=no
+    src={{ jmeter_base_dir }}/{{ jmeter_archive }}
+    dest={{ jmeter_base_dir }}
+
+  # Note: this simply creates the .desktop file, which can then be found via the launcher and pinned to the dock
+- name: "JMETER | Configure Jmeter desktop entry"
+  template: src=../templates/jmeter.desktop.j2 dest={{ jmeter_desktop }}
+  #when: (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu') and jmeter_download.changed
+  ignore_errors: yes
+
+- name: "JMETER | Create a link to Jmeter - This allows us to start it up by simply typing jmeter at the terminal"
+  #when: jmeter_download.changed
+  become: yes
+  file:
+    src="{{ jmeter_base_dir }}/apache-jmeter-5.0/bin/jmeter"
+    dest=/usr/bin/jmeter
+    state=link
+    owner="{{ user_name }}"
