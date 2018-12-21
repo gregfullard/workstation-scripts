@@ -9,7 +9,47 @@
     group="{{ user_name }}"
 
 # Download Directory Studio
+- name: "LDAP | Download Directory Studio if we don't have it"
+  connection: local
+  get_url: url={{ studio_url }} dest={{download_base_folder}}/{{ studio_archive }} force=no
+  register: studio_download
 
-# Extract Directory Studio (Only if new download)
+# Create folder where studio will be extracted
+- name: "LDAP | Create Directory Studio base directory"
+  become: true
+  file:
+    dest="{{ studio_base_dir }}"
+    state=directory
+    owner="{{ user_name }}"
+    group="{{ user_name }}"
+
+# Copy the studio archive file to where it will be extracted
+- name: "LDAP | Copy Directory Studio archive into place"
+  when: studio_download.changed
+  become: true
+  copy: src={{download_base_folder}}/{{ studio_archive }} dest="{{ studio_base_dir }}/{{ studio_archive }}" owner="{{ user_name }}" group="{{ user_name }}" mode=644
+
+# Extract the studio archive file
+- name: "LDAP | Untar Directory Studio archive"
+  when: studio_download.changed
+  unarchive:
+    copy=no
+    src={{ studio_base_dir }}/{{ studio_archive }}
+    dest={{ studio_base_dir }}
+
+  # Note: this simply creates the .desktop file, which can then be found via the launcher and pinned to the dock
+- name: "LDAP | Configure Directory Studio desktop entry"
+  template: src=../templates/directory-studio.desktop.j2 dest={{ studio_desktop }}
+  #when: (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu') and studio_download.changed
+  ignore_errors: yes
+
+- name: "LDAP | Create a link to Directory Studio - This allows us to start it up by simply typing directory-studio at the terminal"
+  #when: studio_download.changed
+  become: yes
+  file:
+    src="{{ studio_base_dir }}/ApacheDirectoryStudio/ApacheDirectoryStudio"
+    dest=/usr/bin/directory-studio
+    state=link
+    owner="{{ user_name }}"
 
 # Create standalone DS Server

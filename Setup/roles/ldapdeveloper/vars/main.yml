@@ -1,5 +1,7 @@
 # Variables required for AEM setups
+studio_version: "2.0.0.v20180908-M14"
 studio_base_dir: "{{ home_folder }}/Software/ApacheDSStudio"
-generic_ldap_server_dir: "{{ home_folder }}/Software/ApacheDirectoryServer1"
-studio_archive: "xxx.tar.gz"
-studio_url: "XXX/{{studio_archive}}"
+studio_archive: "ApacheDirectoryStudio-2.0.0.v20180908-M14-linux.gtk.x86_64.tar.gz"
+studio_url: "http://mirror.za.web4africa.net/apache/directory/studio/2.0.0.v20180908-M14/{{studio_archive}}"
+studio_owner_home: "{{ home_folder }}"
+studio_desktop: "{{ studio_owner_home }}/.local/share/applications/directory-studio.desktop"
