@@ -1,13 +1,5 @@
 # Setting up Apache Directory Studio
 
-- name: "LDAP | Create Directory Studio home directory"
-  become: true
-  file:
-    dest="{{ studio_base_dir }}"
-    state=directory
-    owner="{{ user_name }}"
-    group="{{ user_name }}"
-
 # Download Directory Studio
 - name: "LDAP | Download Directory Studio if we don't have it"
   connection: local

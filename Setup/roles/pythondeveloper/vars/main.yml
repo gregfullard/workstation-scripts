@@ -1,0 +1,17 @@
+# Variables required for LDAP setups
+anaconda_mirror: https://repo.continuum.io/archive
+anaconda_python_version: 3
+anaconda_version: "2018.12"
+anaconda_platform: "Linux-x86_64"
+anaconda_name: "Anaconda{{anaconda_python_version}}-{{anaconda_version}}-{{anaconda_platform}}"
+anaconda_installer: "{{ anaconda_name }}.sh"
+anaconda_url: "{{ anaconda_mirror }}/{{ anaconda_installer }}"
+anaconda_owner_home: "{{ home_folder }}"
+anaconda_base_dir: "{{ home_folder }}/Software/Anaconda"
+anaconda_install_dir: "{{ anaconda_base_dir }}/anaconda3"
+anaconda_link_subdir: anaconda
+anaconda_pkg_update: True
+anaconda_timeout_seconds: 600
+
+
+anaconda_desktop: "{{ studio_owner_home }}/.local/share/applications/anaconda.desktop"

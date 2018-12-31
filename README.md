@@ -79,7 +79,7 @@ Ansible playbooks.
 * [Oracle JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 * TBD - [eclipse](http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/neonr) - In Progress
 * TBD - [IntelliJ IDEA](https://www.jetbrains.com/idea/) (Community 2017.3.2)
-* TBD - [JBDS]
+* TBD - [JBDS] (Not sure anymore, might make more sense to use vanilla eclipse)
 * TBD - Eclipse plugin : Sling
 * TBD - Eclipse plugin : rest
 * TBD - Eclipse plugin : AEM
@@ -101,7 +101,7 @@ Ansible playbooks.
 * [JMeter](http://jmeter.apache.org/)
 
 ## Python Developer tools
-* TBD - Anaconda
+* [Anaconda](https://www.anaconda.com/)
 * TBD - Pandas
 * TBD - Jupyter Notebook
 

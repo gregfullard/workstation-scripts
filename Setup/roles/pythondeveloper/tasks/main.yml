@@ -1,0 +1,77 @@
+# Setting up All Python tools Studio
+# Ref: https://github.com/andrewrothstein/ansible-anaconda
+
+# Create folder where Anaconda installer will be extracted
+- name: "Anaconda | Create Anaconda base directory"
+  become: true
+  file:
+    dest="{{ anaconda_base_dir }}"
+    state=directory
+    owner="{{ user_name }}"
+    group="{{ user_name }}"
+
+# Check for existing installation of Anaconda
+- name: "Anaconda | Check for existing installation of Anaconda"
+  become: yes
+  stat:
+    path: '{{ anaconda_base_dir }}/bin/conda'
+  changed_when: false
+  register: anaconda_conda_binary
+
+# Download Anaconda
+- name: "Anaconda | Download Anaconda if we don't have it"
+  connection: local
+  become: true
+  get_url: url={{ anaconda_url }} dest={{download_base_folder}}/{{ anaconda_installer }} force=no timeout={{anaconda_timeout_seconds}} mode=755
+  register: anaconda_download
+
+# Copy the installer file to where it will be excuted
+- name: "Anaconda | Copy Anaconda installer into place"
+  when: anaconda_download.changed
+  become: true
+  copy: src={{download_base_folder}}/{{ anaconda_installer }} dest="{{ anaconda_base_dir }}/{{ anaconda_installer }}" owner="{{ user_name }}" group="{{ user_name }}" mode=755
+
+#     - name: install...
+#       become: yes
+#       become_user: root
+#       command: /tmp/{{anaconda_installer_sh}} -b -p {{anaconda_install_dir}}
+#       args:
+#         creates: '{{anaconda_install_dir}}'
+
+# Run the Anaconda installer
+- name: "Anaconda | Run the Anaconda installer"
+  when: not anaconda_conda_binary.stat.exists
+  shell: "{{ anaconda_base_dir }}/{{ anaconda_installer }} -b -p {{anaconda_install_dir}}"
+  args:
+    creates: '{{anaconda_install_dir}}'
+
+- name: "Anaconda | Create a link to Anaconda - This allows us to start it up by simply typing conda at the terminal"
+  when: not anaconda_conda_binary.stat.exists
+  become: yes
+  file:
+    src="{{ anaconda_install_dir }}/bin/conda"
+    dest=/usr/bin/conda
+    state=link
+    owner="{{ user_name }}"
+
+- name: "Anaconda | Create a link to Anaconda-Navigator - This allows us to start it up by simply typing navigator at the terminal"
+  #when: not anaconda_conda_binary.stat.exists
+  become: yes
+  file:
+    src="{{ anaconda_install_dir }}/bin/anaconda-navigator"
+    dest=/usr/bin/navigator
+    state=link
+    owner="{{ user_name }}"
+
+- name: "Anaconda | Update conda pkgs..."
+  when: anaconda_pkg_update
+  become: yes
+  command: '{{ anaconda_install_dir }}/bin/conda update -y --all'
+
+#- name: "Anaconda | Remove conda-curl since it conflicts with the system curl"
+#  when: not anaconda_conda_binary.stat.exists
+#  become: yes
+#  conda:
+#    name: curl
+#    state: absent
+#    executable: '{{ anaconda_install_dir }}/bin/conda'
