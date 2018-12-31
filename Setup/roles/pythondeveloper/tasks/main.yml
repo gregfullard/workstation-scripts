@@ -63,11 +63,6 @@
     state=link
     owner="{{ user_name }}"
 
-- name: "Anaconda | Update conda pkgs..."
-  when: anaconda_pkg_update
-  become: yes
-  command: '{{ anaconda_install_dir }}/bin/conda update -y --all'
-
 #- name: "Anaconda | Remove conda-curl since it conflicts with the system curl"
 #  when: not anaconda_conda_binary.stat.exists
 #  become: yes
@@ -75,3 +70,42 @@
 #    name: curl
 #    state: absent
 #    executable: '{{ anaconda_install_dir }}/bin/conda'
+
+# - name: "Anaconda | Add Anaconda initialisation to .bashrc (Similar to what the installer does)"
+#   when: not anaconda_conda_binary.stat.exists
+#   blockinfile:
+#     path: '{{ ansible_env.HOME }}/.bashrc'
+#     marker: "# {mark} ANSIBLE MANAGED BLOCK"
+#     insertbefore: EOF
+#     block: |
+#       export PATH="{{ anaconda_install_dir }}/bin:$PATH"
+#       export ANACONDA_HOME={{ anaconda_install_dir }}
+
+- name: "Anaconda | Add Anaconda initialisation to .bashrc (Similar to what the installer does)"
+  when: not anaconda_conda_binary.stat.exists
+  blockinfile:
+    path: '{{ ansible_env.HOME }}/.bashrc'
+    marker: "# {mark} ANSIBLE MANAGED BLOCK"
+    insertbefore: EOF
+    block: |
+      # >>> conda init >>>
+      # !! Contents within this block are managed by 'conda init' !!
+      __conda_setup="$(CONDA_REPORT_ERRORS=false '{{ anaconda_install_dir }}/bin/conda' shell.bash hook 2> /dev/null)"
+      if [ $? -eq 0 ]; then
+        \eval "$__conda_setup"
+      else
+        if [ -f "{{ anaconda_install_dir }}/etc/profile.d/conda.sh" ]; then
+          . "{{ anaconda_install_dir }}/etc/profile.d/conda.sh"
+          CONDA_CHANGEPS1=false conda activate base
+        else
+          \export PATH="{{ anaconda_install_dir }}/bin:$PATH"
+        fi
+      fi
+      unset __conda_setup
+      # <<< conda init <<<
+
+- name: "Anaconda | Update conda pkgs..."
+  when: anaconda_pkg_update
+  shell: |
+    source activate root
+    {{ anaconda_install_dir }}/bin/conda update -y --all
