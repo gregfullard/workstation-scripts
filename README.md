@@ -322,9 +322,13 @@ To review whether the configuration was successful, you can do the following at 
     * TODO
  * Remove unwanted Nautilus links in Home holder
     * TODO   
- * Edit Nautilus Bookmarks  
+ * Edit Nautilus Bookmarks
+    * Browse to ~/Greg_OfflineData, add bookmark (Burger Menu > Bookmark this location)
+    * Browse to ~/Greg_OfflineData/VMShare, add bookmark (Bookmarks > Bookmark this location)
+    * Connect to Server (192.168.3.253). Open public folder, add bookmark.
     * TODO  
  * Resize Launcher (super key > dock)
+    * Also display on all screens
  * Add View Desktop button to dock
     * Super Key "Desktop" > Add to Favourites
  * Add Eclipse button to dock
