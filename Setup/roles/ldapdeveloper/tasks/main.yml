@@ -1,5 +1,14 @@
 # Setting up Apache Directory Studio
 
+# Install Ubuntu ldaputils
+- name: "LDAP | Installing LDAP Software"
+  become: yes
+  apt:
+    pkg:
+      - ldap-utils
+    state: present
+    autoclean: yes
+
 # Download Directory Studio
 - name: "LDAP | Download Directory Studio if we don't have it"
   connection: local
