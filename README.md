@@ -325,8 +325,11 @@ To review whether the configuration was successful, you can do the following at 
  * Edit Nautilus Bookmarks
     * Browse to ~/Greg_OfflineData, add bookmark (Burger Menu > Bookmark this location)
     * Browse to ~/Greg_OfflineData/VMShare, add bookmark (Bookmarks > Bookmark this location)
-    * Connect to Server (192.168.3.253). Open public folder, add bookmark.
-    * TODO  
+    * Browse to ~/Repos, add bookmark (Bookmarks > Bookmark this location)
+    * Browse to ~/GoogleDrive, add bookmark (Bookmarks > Bookmark this location)
+    * Browse to ~/OneDrive, add bookmark (Bookmarks > Bookmark this location)
+    * Browse to ~/Software, add bookmark (Bookmarks > Bookmark this location)
+    * Connect to Server (192.168.3.253). Open public folder, add bookmark. 
  * Resize Launcher (super key > dock)
     * Also display on all screens
  * Add View Desktop button to dock
