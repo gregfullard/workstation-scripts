@@ -5,10 +5,10 @@
   roles:
   - basic
   - workstation
-  - developer
-  - javadeveloper
-  - aemdeveloper
-  - ldapdeveloper
-  - dbdeveloper
-  - pythondeveloper
-  - testdeveloper
+#  - developer
+#  - javadeveloper
+#  - aemdeveloper
+#  - ldapdeveloper
+#  - dbdeveloper
+#  - pythondeveloper
+#  - testdeveloper
