@@ -99,6 +99,9 @@ Ansible playbooks.
 * [soapui](https://www.soapui.org/)
 * [postman](https://www.getpostman.com/)
 * [JMeter](http://jmeter.apache.org/)
+* TODO - Chrome Webdriver
+* TODO - Firefox Webdriver
+* TODO - PhantomJS Webdriver
 
 ## Python Developer tools
 * [Anaconda](https://www.anaconda.com/)
@@ -234,9 +237,6 @@ To review whether the configuration was successful, you can do the following at 
      * RestEditor, http://resteditor.sourceforge.net/eclipse/
  * Download and Install Adobe Reader
      * TODO
- * Download and Install Balsamiq Mockups
-     * TODO
-     * https://support.balsamiq.com/installation/linux/
  * Download and Install AEM
      * Drop AEM Quickstart JAR and Licence file at ~/Software/AEM/<version>/author
      * Open terminal
@@ -329,7 +329,7 @@ To review whether the configuration was successful, you can do the following at 
     * Browse to ~/GoogleDrive, add bookmark (Bookmarks > Bookmark this location)
     * Browse to ~/OneDrive, add bookmark (Bookmarks > Bookmark this location)
     * Browse to ~/Software, add bookmark (Bookmarks > Bookmark this location)
-    * Connect to Server (192.168.3.253). Open public folder, add bookmark. 
+    * Connect to Server (192.168.3.253). Open public folder, add bookmark.
  * Resize Launcher (super key > dock)
     * Also display on all screens
  * Add View Desktop button to dock

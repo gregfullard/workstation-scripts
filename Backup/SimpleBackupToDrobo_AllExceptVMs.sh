@@ -11,3 +11,4 @@ sudo rsync -r -a -v --progress -s --stats /home/gregf/Email /mnt/GregData/Greg_O
 sudo rsync -r -a -v --progress -s --stats /home/gregf/Desktop /mnt/GregData/Greg_OfflineData/
 sudo rsync -r -a -v --progress -s --stats /home/gregf/.ssh /mnt/GregData/Greg_OfflineData/
 sudo rsync -r -a -v --progress -s --stats /home/gregf/.pem /mnt/GregData/Greg_OfflineData/
+sudo rsync -r -a -v --progress -s --stats /home/gregf/GoogleDrive /mnt/GregData/Greg_OnlineData/
