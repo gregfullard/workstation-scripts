@@ -51,6 +51,7 @@ git clone git@github.com:gregfullard/workstation-scripts.git WorkstationScripts
 echo '****************'
 echo '**************** Install Ansible'
 sudo apt-get -y install ansible
+sudo apt-get -y python-apt
 
 # openssh server (needed by Ansible to connecto localhost via ssh)
 echo '****************'

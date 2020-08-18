@@ -11,10 +11,21 @@ into the ~/.ssh folder. Additionally, make sure that the key files are given app
 * chmod 600 id_rsa
 * chmod 600 id_rsa.pub
 
+Currently it assumes the user name is gregf and you are running ubuntu 20.04
+
 # Run it
 ```shell
 wget -qO- https://raw.github.com/gregfullard/workstation-scripts/master/bootstrap.sh | bash
 ```
+
+The bootstrap script installs a few barebones tools and then fires up an ansible script.
+If the ansible script fails and needs to be rerun, you can do so by:
+
+```shell
+cd ~/WorkstationScripts/Setup
+ansible-playbook -K -i hosts-dev-workstation dev-workstation-playbook.yml
+```
+
 # Disclaimer
 This is just for personal convenience. You're welcome to reuse, but it comes with no guarantees
 

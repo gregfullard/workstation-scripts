@@ -2,7 +2,7 @@
 # ================================================================================
 
 # Install Easy packages
-- name: "BASE | Installing Base Developer Software"
+- name: "BASE | Installing Base Developer apts"
   become: yes
   apt:
     pkg:
@@ -18,6 +18,13 @@
       - vagrant
     state: present
     autoclean: yes
+
+# Install snaps
+- name: "BASE | Installing Base Developer Snaps"
+  snap:
+    name:
+      - code
+    state: present
 
 # Add Atom repo
 - name: "ATOM | Registering Atom Repo"
