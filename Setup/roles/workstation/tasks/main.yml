@@ -43,10 +43,10 @@
 # Create Folders
 - name: "FOLDER | Software"
   file: path=/home/{{ user_name }}/Software state=directory owner={{ user_name }} group={{ user_name }}
-- name: "FOLDER | GoogleDrive"
-  file: path=/home/{{ user_name }}/GoogleDrive state=directory owner={{ user_name }} group={{ user_name }}
-- name: "FOLDER | OneDrive"
-  file: path=/home/{{ user_name }}/OneDrive state=directory owner={{ user_name }} group={{ user_name }}
+#- name: "FOLDER | GoogleDrive"
+#  file: path=/home/{{ user_name }}/GoogleDrive state=directory owner={{ user_name }} group={{ user_name }}
+#- name: "FOLDER | OneDrive"
+#  file: path=/home/{{ user_name }}/OneDrive state=directory owner={{ user_name }} group={{ user_name }}
 - name: "FOLDER | Email"
   file: path=/home/{{ user_name }}/Email state=directory owner={{ user_name }} group={{ user_name }}
 - name: "FOLDER | Greg_OfflineData"
