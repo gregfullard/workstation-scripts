@@ -9,27 +9,27 @@
     state: present
 
 # This  package is used to manage repositories from which software is installed (I believe)
-- name: "JDK8 | Install add-apt-repostory"
-  become: yes
-  apt: name=software-properties-common state=latest
+#- name: "JDK8 | Install add-apt-repostory"
+#  become: yes
+#  apt: name=software-properties-common state=latest
 
 # Oracle Repo
-- name: "JDK8 | Add Oracle Java Repository"
-  become: yes
-  apt_repository: repo='ppa:webupd8team/java'
+#- name: "JDK8 | Add Oracle Java Repository"
+#  become: yes
+#  apt_repository: repo='ppa:webupd8team/java'
 
-- name: "JDK8 | Accept Java 8 License"
-  become: yes
-  debconf: name='oracle-java8-installer' question='shared/accepted-oracle-license-v1-1' value='true' vtype='select'
+#- name: "JDK8 | Accept Java 8 License"
+#  become: yes
+#  debconf: name='oracle-java8-installer' question='shared/accepted-oracle-license-v1-1' value='true' vtype='select'
 
-- name: "JDK8 | Install Oracle Java 8"
-  become: yes
-  apt:
-    name:
-      - oracle-java8-installer
-      - ca-certificates
-      - oracle-java8-set-default
-    state: latest
+#- name: "JDK8 | Install Oracle Java 8"
+#  become: yes
+#  apt:
+#    name:
+#      - oracle-java8-installer
+#      - ca-certificates
+#      - oracle-java8-set-default
+#    state: latest
 
     #- name: Accept Java 7 License
     #  become: yes
@@ -45,4 +45,4 @@
 #  when: j7_from_downloaded_binaries is defined
 
 # eclipse
-- import_tasks: eclipse.yml
+#- import_tasks: eclipse.yml

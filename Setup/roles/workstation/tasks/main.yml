@@ -7,7 +7,7 @@
   apt:
     pkg:
       - virtualbox
-      - shutter
+#      - shutter
       - vokoscreen
       - gscan2pdf
       - breeze-icon-theme
@@ -60,45 +60,45 @@
 
 # Google Chrome
 # via http://linuxg.net/how-to-install-google-chrome-42-stable-on-the-most-popular-linux-systems-via-the-official-google-repository/
-- name: "CHROME | Ensure Google linux signing key present"
-  become: yes
-  apt_key: url=https://dl-ssl.google.com/linux/linux_signing_key.pub state=present
-
-- name: "CHROME | Ensure Google chrome repo present"
-  become: yes
-  apt_repository:
-    repo: "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main"
-    filename: google-chrome
-    state: present
-    update_cache: yes
-
-- name: "CHROME | Ensure Google chrome present"
-  become: yes
-  apt:
-    name: "google-chrome-stable"
-    state: present
+#- name: "CHROME | Ensure Google linux signing key present"
+#  become: yes
+#  apt_key: url=https://dl-ssl.google.com/linux/linux_signing_key.pub state=present
+#
+#- name: "CHROME | Ensure Google chrome repo present"
+#  become: yes
+#  apt_repository:
+#    repo: "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main"
+#    filename: google-chrome
+#    state: present
+#    update_cache: yes
+#
+#- name: "CHROME | Ensure Google chrome present"
+#  become: yes
+#  apt:
+#    name: "google-chrome-stable"
+#    state: present
 
 # InSync
 #- name: "Insync key"
 #  become: yes
 #  shell: apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ACCAF35C
-- name: "INSYNC | Add Insync key"
-  become: yes
-  apt_key: keyserver=keyserver.ubuntu.com id=ACCAF35C
-
-- name: "INSYNC | Ensure Insync repo present"
-  become: yes
-  apt_repository:
-    repo: "deb http://apt.insynchq.com/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} non-free contrib "
-    filename: insync
-    state: present
-    update_cache: yes
-
-- name: "INSYNC | Ensure Insync present"
-  become: yes
-  apt:
-    name: "insync"
-    state: present
+#- name: "INSYNC | Add Insync key"
+#  become: yes
+#  apt_key: keyserver=keyserver.ubuntu.com id=ACCAF35C
+#
+#- name: "INSYNC | Ensure Insync repo present"
+#  become: yes
+#  apt_repository:
+#    repo: "deb http://apt.insynchq.com/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} non-free contrib "
+#    filename: insync
+#    state: present
+#    update_cache: yes
+#
+#- name: "INSYNC | Ensure Insync present"
+#  become: yes
+#  apt:
+#    name: "insync"
+#    state: present
 
 # Zoom
 # Download Deb
@@ -163,41 +163,41 @@
 
 # Note: Balsamiq installation steps simply replicate https://support.balsamiq.com/installation/linux/
 # Download Balsamiq Mockups
-- name: "BALSAMIQ | Download Balsamiq Mockups if we don't have it"
-  connection: local
-  get_url: url={{ balsamiq_url }} dest={{download_base_folder}}/{{ balsamiq_archive }} force=no
-  register: balsamiq_download
+#- name: "BALSAMIQ | Download Balsamiq Mockups if we don't have it"
+#  connection: local
+#  get_url: url={{ balsamiq_url }} dest={{download_base_folder}}/{{ balsamiq_archive }} force=no
+#  register: balsamiq_download
 
 # Create folder where Balsamiq will be extracted
-- name: "BALSAMIQ | Create Balsamiq Mockups base directory"
-  become: true
-  file:
-    dest="{{ balsamiq_base_dir }}"
-    state=directory
-    owner="{{ user_name }}"
-    group="{{ user_name }}"
+#- name: "BALSAMIQ | Create Balsamiq Mockups base directory"
+#  become: true
+#  file:
+#    dest="{{ balsamiq_base_dir }}"
+#    state=directory
+#    owner="{{ user_name }}"
+#    group="{{ user_name }}"
 
 # Copy the balsamiq archive file to where it will be extracted
-- name: "BALSAMIQ | Copy Balsamiq archive into place"
-  when: balsamiq_download.changed
-  become: true
-  copy: src={{download_base_folder}}/{{ balsamiq_archive }} dest="{{ balsamiq_base_dir }}/{{ balsamiq_archive }}" owner="{{ user_name }}" group="{{ user_name }}" mode=644
+#- name: "BALSAMIQ | Copy Balsamiq archive into place"
+#  when: balsamiq_download.changed
+#  become: true
+#  copy: src={{download_base_folder}}/{{ balsamiq_archive }} dest="{{ balsamiq_base_dir }}/{{ balsamiq_archive }}" owner="{{ user_name }}" group="{{ user_name }}" mode=644
 
 # Extract the balsamiq archive file
-- name: "BALSAMIQ | Unzip Balsamiq Mockups archive"
-  when: balsamiq_download.changed
-  unarchive:
-    copy=no
-    src={{ balsamiq_base_dir }}/{{ balsamiq_archive }}
-    dest={{ balsamiq_base_dir }}
+#- name: "BALSAMIQ | Unzip Balsamiq Mockups archive"
+#  when: balsamiq_download.changed
+#  unarchive:
+#    copy=no
+#    src={{ balsamiq_base_dir }}/{{ balsamiq_archive }}
+#    dest={{ balsamiq_base_dir }}
 
 # Rename Balsamiq extracted folder
-- name: "BALSAMIQ | Rename Balsamiq extracted folder"
-  when: balsamiq_download.changed
-  command: mv {{ balsamiq_base_dir }}/Balsamiq_Mockups_3 {{ balsamiq_base_dir }}/balsamiq_{{ balsamiq_version_for_folder }}
+#- name: "BALSAMIQ | Rename Balsamiq extracted folder"
+#  when: balsamiq_download.changed
+#  command: mv {{ balsamiq_base_dir }}/Balsamiq_Mockups_3 {{ balsamiq_base_dir }}/balsamiq_{{ balsamiq_version_for_folder }}
 
-- name: "BALSAMIQ | Delete Balsamiq Link if it exists"
-  command: rm -f {{ balsamiq_base_dir }}/balsamiq
+#- name: "BALSAMIQ | Delete Balsamiq Link if it exists"
+#  command: rm -f {{ balsamiq_base_dir }}/balsamiq
 
 # Not sure why this is needed anywhere
 #- name: "BALSAMIQ | Create a link to Balsamiq folder"
@@ -210,17 +210,18 @@
 #    owner="{{ user_name }}"
 
 # Rename Balsamiq EXE
-- name: "BALSAMIQ | Rename Balsamiq EXE"
-  when: balsamiq_download.changed
-  command: mv {{ balsamiq_base_dir }}/balsamiq_{{ balsamiq_version_for_folder }}/Balsamiq\ Mockups\ 3.exe {{ balsamiq_base_dir }}/balsamiq_{{ balsamiq_version_for_folder }}/balsamiq.exe
+#- name: "BALSAMIQ | Rename Balsamiq EXE"
+#  when: balsamiq_download.changed
+#  command: mv {{ balsamiq_base_dir }}/balsamiq_{{ balsamiq_version_for_folder }}/Balsamiq\ Mockups\ 3.exe {{ balsamiq_base_dir }}/balsamiq_{{ balsamiq_version_for_folder }}/balsamiq.exe
 
   # Note: this simply creates the .desktop file, which can then be found via the launcher and pinned to the dock
-- name: "BALSAMIQ | Configure Balsamiq desktop entry"
-  template: src=../templates/balsamiq.desktop.j2 dest={{ balsamiq_desktop }}
-  when: (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu') and balsamiq_download.changed
-  ignore_errors: yes
+#- name: "BALSAMIQ | Configure Balsamiq desktop entry"
+#  template: src=../templates/balsamiq.desktop.j2 dest={{ balsamiq_desktop }}
+#  when: (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu') and balsamiq_download.changed
+#  ignore_errors: yes
 
 - name: "Workstation | Add show desktop entry"
+  when: ansible_distribution == "Ubuntu" and ansible_distribution_version == "18.04"
   become: yes
   template:
     src: show-desktop.desktop.j2

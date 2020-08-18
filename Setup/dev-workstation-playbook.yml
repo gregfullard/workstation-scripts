@@ -5,8 +5,8 @@
   roles:
   - basic
   - workstation
-#  - developer
-#  - javadeveloper
+  - developer
+  - javadeveloper
 #  - aemdeveloper
 #  - ldapdeveloper
 #  - dbdeveloper

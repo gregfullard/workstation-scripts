@@ -9,10 +9,10 @@
       - nano
       - git
       - glogg
-      - retext
+#      - retext
       - texlive-full
       - texmaker
-      - python-pip
+#      - python-pip
       - python-dev
       - build-essential
       - vagrant
@@ -20,33 +20,33 @@
     autoclean: yes
 
 # Install snaps
-- name: "BASE | Installing Base Developer Snaps"
-  snap:
-    name:
-      - code
-    state: present
+#- name: "BASE | Installing Base Developer Snaps"
+#  snap:
+#    name:
+#      - code
+#    state: present
 
 # Add Atom repo
-- name: "ATOM | Registering Atom Repo"
-  become: yes
-  apt_repository:
-    repo: "ppa:webupd8team/atom"
-    state: present
+#- name: "ATOM | Registering Atom Repo"
+#  become: yes
+#  apt_repository:
+#    repo: "ppa:webupd8team/atom"
+#    state: present
 
 # Install Atom packages
-- name: "ATOM | Installing Atom"
-  become: yes
-  apt:
-    pkg:
-      - atom
-    state: present
-    autoclean: yes
+#- name: "ATOM | Installing Atom"
+#  become: yes
+#  apt:
+#    pkg:
+#      - atom
+#    state: present
+#    autoclean: yes
 
 # Install sphinx
-- name: "SPHINX | Install Sphinx with PIP"
-  become: yes
-  pip:
-    name: Sphinx
+#- name: "SPHINX | Install Sphinx with PIP"
+#  become: yes
+#  pip:
+#    name: Sphinx
 
 # Install Docker
 - name: "DOCKER | Installing Docker"
